@@ -1,0 +1,63 @@
+
+
+Paper mais focado no crescimento da demanda de videos por um ponto de vista técnico e muito embasado. Com diversas fontes
+https://openpraxis.org/articles/10.55982/openpraxis.17.1.721
+Sugiro usar esse como backbone de uma frase sobre demanda de videos na intro.
+
+"Instructional videos are dynamic multimedia resources that explicitly teach factual, 
+conceptual, or procedural knowledge (Deng & Gao, 2023; ten Hove & van der Meij, 2015). 
+Unlike traditional content delivery methods, videos engage learners by presenting
+information continuously, compelling them to process the material at a predetermined 
+pace (Fyfield et al., 2022; Ibrahim et al., 2012). These prerecorded multimedia 
+resources combine moving images and audio, typically including spoken words or
+background sounds (Mayer, 2009; Mayer et al., 2020). Using motion pictures captured
+by a camera and recorded speech and background sounds, instructional videos provide 
+a powerful medium for delivering educational content (Mayer, 2009) and require students 
+to actively focus on the presented ideas and concepts (Mirriahi et al., 2021). Recognized
+by educators and researchers, videos have emerged as a powerful tool for cultivating 
+effective teaching practices and enhancing students’ learning experiences in the 
+21st century (Blomberg et al., 2014; Hamel & Viau-Guay, 2019).
+
+Videos serve diverse purposes in education, including presenting authentic material (Huang, 2021), 
+simulating experiments (Coskun Karabulut et al., 2023), facilitating role-playing (Barón & Celaya, 2022), 
+demonstrating procedures (H’mida et al., 2022), and delivering lectures (Chen & Wu, 2015). 
+While commonly used in practical disciplines like nursing (Evi-Colombo et al., 2023), medicine (Fakhry et al., 2007), 
+teacher training (Peguera-Carré et al., 2023), and language education (Colognesi et al., 2023), 
+videos are increasingly utilized across academic fields. Considering the pivotal role of instructional 
+videos in online learning and their extensive application across various disciplines, it is essential for researchers 
+to investigate their utilization in the literature from a comprehensive perspective.
+Accordingly, this study seeks to analyze research on instructional videos with a focus on descriptive 
+trends, influential contributions, key issues, prevailing research themes, and directions 
+for future studies.
+
+Videos are extensively integrated into education across all sectors, especially universities adopting online 
+learning and asynchronous multimedia through videos (Noetel et al., 2021). The COVID-19 pandemic further 
+emphasized the importance of instructional videos in education, as online streaming and mobile learning 
+made them prevalent (Cojean & Jamet, 2022; Deng & Benckendorff, 2021). The availability of video production 
+tools and platforms, including YouTube, with billions of hours dedicated to instructional content, has 
+contributed to their widespread usage (Cihangir & Coklar, 2021). The new forms of distance education like 
+MOOCs, blended learning, and the flipped classroom have also renewed the focus on utilizing videos for 
+pedagogical purposes (Thompson et al., 2021). Videos were one of the most used educational materials in 
+flipped classrooms (Lo, 2023; Zhao, Hu, & Yezhova, 2024). The recent technological advancements would make 
+instructional videos more useful, adaptive, and accessible to a global audience. Artificial Intelligence (AI) 
+holds remarkable potential for transforming instructional videos at this point making them more engaging, 
+adaptive, and personalized to each learner’s needs. AI would also make instructional video production easier 
+with its distinct features such as AI-generated pedagogical agents or avatars (Lim, 2024).
+
+Research suggests that videos generally improve learning outcomes (Noetel et al., 2021) and enhance social 
+presence in online courses, increasing learner interaction and satisfaction (Kang & van Es, 2018; Lowenthal, 
+2022; Sablić et al., 2021). However, it is important to note that video alone is not inherently effective; its 
+value lies in being embedded in appropriate instructional contexts (Seidel et al., 2013). In face-to-face 
+lectures, students appreciate videos that are well-integrated into the course, flow seamlessly, and are not 
+overly lengthy (Alpert & Hodkinson, 2019). Effective videos are typically shorter than 
+6 minutes (Guo et al., 2014) and segmented into chunks to enhance learner engagement (Di Paolo et al., 2017).
+
+
+Educational videos serve various purposes, including reviewing material, notetaking facilitation, pre-class 
+preparation, and compensating for missed classes (Kay, 2012). They can engage learners with course materials 
+and simulate a classroom experience through online video lectures with audio and video 
+instruction (Di Paolo et al., 2017; Chen & Wu, 2015). Videos reinforce content, bridge theory and practice, 
+and motivate learners. However, passive consumption of videos should be avoided, as active engagement is 
+crucial for effective learning (Mirriahi et al., 2021). Improper use of videos can be counterproductive and 
+lead to inflated perceptions of understanding (Hobbs, 2006; Szpunar et al., 2014). Nevertheless, students 
+generally have positive attitudes toward instructional videos and find them helpful for learning (Kay, 2012)."
