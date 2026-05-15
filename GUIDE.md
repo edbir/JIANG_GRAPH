@@ -19,7 +19,10 @@ Um sistema que pega aulas de história do YouTube (Prof. Jiang, canal "Predictiv
 ```
 🎬 YouTube (Predictive History)
     │
-    ▼ (Groq/Whisper transcreve)
+    ▼ (download_and_transcribe.py: yt-dlp baixa áudio)
+🔊 Áudio mp3 (64kbps)
+    │
+    ▼ (download_and_transcribe.py: Groq Whisper transcreve)
 📝 Transcrição bruta
     │
     ▼ (text_cleaner.py remove ruído)
@@ -100,6 +103,7 @@ MCP é um protocolo que permite qualquer LLM (Claude, GPT, etc.) chamar funçõe
 # 1. Ter Docker instalado
 # 2. Ter Python 3.11+
 # 3. Ter chaves de API (OpenAI + Groq)
+# 4. Ter ffmpeg instalado (sudo apt install ffmpeg)
 ```
 
 ### Setup inicial (uma vez)
@@ -112,12 +116,26 @@ pip install -r requirements.txt
 
 # Configurar chaves
 cp .env.example .env
-# Editar .env com suas chaves
+# Editar .env com suas chaves (OPENAI_API_KEY + GROQ_API_KEY)
+```
+
+### Baixar e transcrever episódios
+```bash
+# Opção 1: Um vídeo por vez
+python -m scripts.download_and_transcribe \
+    --url "https://www.youtube.com/watch?v=VIDEO_ID" \
+    --episode-id ep001
+
+# Opção 2: Batch (vários episódios de uma vez)
+# Crie um arquivo episodes.txt com formato:
+#   ep001 https://www.youtube.com/watch?v=ABC123 The Fall of Rome
+#   ep002 https://www.youtube.com/watch?v=DEF456 Alexander's Conquests
+python -m scripts.download_and_transcribe --batch episodes.txt
 ```
 
 ### Ingerir um episódio
 ```bash
-# 1. Colocar transcrição em data/transcripts/ep001.txt
+# 1. Ter transcrição em data/transcripts/ep001.txt (passo anterior)
 
 # 2. Rodar o pipeline completo
 python -m scripts.ingest_episode \
@@ -164,7 +182,9 @@ python -m src.mcp.server
 
 | Arquivo | Uma frase |
 |---------|-----------|
-| `ingest_episode.py` | Pipeline completo: transcript → graph (o que você roda) |
+| `download_and_transcribe.py` | YouTube URL → áudio (yt-dlp) → transcript.txt (Groq Whisper) |
+| `ingest_episode.py` | Pipeline completo: transcript → graph (o que você roda depois) |
+| `validate_graph.py` | QA: detecta orphans, duplicatas, embeddings faltando, etc. |
 
 ### Documentação (`docs/`)
 
@@ -183,6 +203,20 @@ python -m src.mcp.server
 ---
 
 ## Fluxo de Dados Detalhado (para quem quer entender a fundo)
+
+### Fase 0: Download e Transcrição
+
+```
+Input: YouTube URL (e.g., "https://www.youtube.com/watch?v=VIDEO_ID")
+
+download_and_transcribe.py:
+  → download_audio()         : yt-dlp extrai áudio como mp3 (64kbps)
+  → split_audio()            : se > 20 min, divide em segmentos (ffmpeg)
+  → transcribe_full_audio()  : cada segmento → Groq Whisper large-v3
+  → concatena segmentos      : junta todos os textos em ordem
+
+Output: data/transcripts/ep001.txt (~15,000-20,000 tokens de texto bruto)
+```
 
 ### Fase 1: Preprocessing
 
@@ -324,12 +358,13 @@ retrieval (quando usuário pergunta):
 
 ## Próximos Passos (quando tiver API + Neo4j)
 
-1. ✅ Configurar `.env` com chaves
+1. ✅ Configurar `.env` com chaves (OPENAI_API_KEY + GROQ_API_KEY)
 2. ✅ `docker compose up -d`
 3. ✅ `pip install -r requirements.txt`
-4. Transcrever 5 episódios (Groq free tier)
-5. Rodar `ingest_episode.py` para cada um
-6. Testar queries de `tests/test_queries.md`
-7. Iterar nos prompts baseado nos resultados
-8. Documentar resultados no TCC.md
-9. Escrever o artigo seção por seção
+4. ✅ Instalar ffmpeg (`sudo apt install ffmpeg`)
+5. Baixar e transcrever 5 episódios (`download_and_transcribe.py`)
+6. Rodar `ingest_episode.py` para cada um
+7. Testar queries de `tests/test_queries.md`
+8. Iterar nos prompts baseado nos resultados
+9. Documentar resultados no TCC.md
+10. Escrever o artigo seção por seção
