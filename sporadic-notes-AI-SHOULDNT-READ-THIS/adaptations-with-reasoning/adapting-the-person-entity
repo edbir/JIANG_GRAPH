@@ -1,0 +1,13 @@
+How to Model the "Person" Entity
+
+The Person entity must be reserved strictly for the historical figures and geopolitical actors being discussed (Julius Caesar, Genghis Khan, modern diplomats). The "host/guest" logic from the financial podcast needs to be swapped for historical and geopolitical roles.
+
+Here is the precise adaptation for your document:
+
+Person — Historical figures, contemporary leaders, and geopolitical actors discussed in the lectures (e.g., Julius Caesar, Napoleon, current heads of state).
+• Properties: personId (STRING), name (STRING), aliases (LIST<STRING>), historical_role (STRING — e.g., ruler, military_leader, philosopher, diplomat), time_period (STRING), description (STRING), embedding (LIST<FLOAT>)
+How to Handle Prof. Jiang
+
+Since Prof. Jiang is the sole speaker, his attribution doesn't belong inside the graph's nodes; it belongs in the metadata of the document chunks you are processing.
+
+If you want to trace a claim back to him, you simply add an originating_source or video_id property to your Claim entity. You already know Jiang is the speaker, so what you are really trying to track is which specific video or timestamp he made that claim in.

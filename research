@@ -1,0 +1,68 @@
+REFERENCE READ: https://arxiv.org/pdf/2510.20345 - LLM-empowered knowledge graph construction: A survey
+Regarding shortcomings of Vector-Only RAG
+
+	"However, this approach (Vector-Only RAG) has its limitations. By relying solely on vector search, the response’s content is confined to the text fragments in the retrieved chunks. This can lead to incomplete or fragmented answers.
+
+For example, if a user asks a question about a specific product feature, a vector-only RAG system might retrieve chunks that mention the product but fail to include relevant information from other parts of the documentation that provide a more comprehensive answer."
+
+
+The proposition of GraphRag
+
+
+	"GraphRAG is a common approach to enhance retrieval by incorporating structured domain knowledge stored in a knowledge graph. By tapping into the rich connections and semantic relationships in a knowledge graph, GraphRAG aims to overcome the limitations of vector-only RAG and provide more accurate and explainable responses."
+	
+	
+	
+	
+Advantages of GraphRag in comparison to Vector-Rag
+
+
+"This approach offers several advantages over vector-only RAG systems:
+
+	1.By navigating the graph structure and following relevant relationships, GraphRAG can retrieve information that may not be directly mentioned in the initial set of retrieved chunks, providing a more comprehensive and contextually relevant response.
+	2.The ability to filter and rank the retrieved information based on the user’s context and task allows GraphRAG to prioritize the most pertinent information, improving the overall quality of the generated response.
+	3.GraphRAG enables better explainability by capturing the relationships between the retrieved information, making it easier to trace the sources and reasoning behind the generated response.
+	4.By using the knowledge graph’s ability to integrate structured and unstructured data, as well as computed signals, GraphRAG can provide more informed and nuanced responses that draw from a wider range of information sources."
+	
+
+Regarding Knowledge Extraction, Cruz pipeline seems to follow a SCHEMA-FREE METHODS of Knowledge Extraction though the use of Structured Generative Extraction:
+
+	"Although no external ontology is provided, structured reasoning patterns and generative templates guide the model toward consistent and coherent knowledge generation."
+	
+	Relevant references on the subject of STRUCTURED GENERATIVE EXTRACTION as opposed to schema based:
+	
+		Andrea Papaluca, Daniel Krefl, Sergio Rodr´ıguez Mendez, Artem Lensky, and Hanna Suominen. ´
+Zero- and Few-Shots Knowledge Graph Triplet Extraction with Large Language Models. In
+Proceedings of the 1st Workshop on Knowledge Graphs and Large Language Models (KaLLM
+2024), pp. 12–23, Bangkok, Thailand, 2024. Association for Computational Linguistics. doi:
+10.18653/v1/2024.kallm-1.2. URL https://aclanthology.org/2024.kallm-1.2.
+
+		Xiang Wei, Xingyu Cui, Ning Cheng, Xiaobin Wang, Xin Zhang, Shen Huang, Pengjun Xie, Jinan
+Xu, Yufeng Chen, Meishan Zhang, Yong Jiang, and Wenjuan Han. ChatIE: Zero-Shot Information
+Extraction via Chatting with ChatGPT. arXiv preprint arXiv:2302.10205, may 2024. doi: 10.
+48550/arXiv.2302.10205. URL http://arxiv.org/abs/2302.10205.
+
+		Belinda Mo, Kyssen Yu, Joshua Kazdan, Proud Mpala, Lisa Yu, Chris Cundy, Charilaos Kanatsoulis, and Sanmi Koyejo. KGGen: Extracting Knowledge Graphs from Plain Text with Language Models. arXiv preprint arXiv:2502.09956, feb 2025. doi: 10.48550/arXiv.2502.09956.
+URL http://arxiv.org/abs/2502.09956.
+	
+Regarding Knowledge Fusion
+
+	Regarding Schema-Level Fusion
+	
+		Our work focuses on Data-Driven unification
+		
+			"Data-driven unification: To overcome this rigidity, LKD-KGC (Sun et al., 2025) introduced
+adaptive, embedding-based schema integration. It automatically extracts and merges equivalent entity types via vector clustering and LLM-based deduplication, allowing schema alignment to emerge
+dynamically from data."
+
+			LKD-KGC et al: Jiaqi Sun, Shiyou Qian, Zhangchi Han, Wei Li, Zelin Qian, Dingyu Yang, Jian Cao, and Guangtao
+Xue. LKD-KGC: Domain-Specific KG Construction via LLM-driven Knowledge Dependency
+Parsing. arXiv preprint arXiv:2505.24163, may 2025. doi: 10.48550/arXiv.2505.24163. URL
+http://arxiv.org/abs/2505.24163.
+
+
+ZEP/Graphitti paper. This might be the goat paper at the moment, they were the first to develop the bitemporal stuff
+https://arxiv.org/pdf/2501.13956
+	
+	
+	

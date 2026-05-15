@@ -1,0 +1,23 @@
+Claim — A reified historical interpretation, geopolitical prediction, or causal assertion made by the speaker (Prof. Jiang). This is the schema's key innovation for moving beyond flat RAG to causal reasoning.
+
+    Properties: * claimId
+
+        text (STRING)
+
+        claimType (STRING — factual_assertion / historical_interpretation / geopolitical_prediction / causal_analysis)
+
+        stance (STRING — replacing 'sentiment' — critical / favorable / neutral / speculative)
+
+        confidence (FLOAT 0–1 — represents the LLM's confidence in the extraction)
+
+        status (STRING — active / superseded / verified / refuted / debated)
+
+        embedding (LIST<FLOAT>)
+
+Why these specific tweaks work for your graph:
+
+    stance (The Sentiment Replacement): If Jiang says, "Napoleon's continental system was a catastrophic strategic blunder," the stance is critical. If he says, "The geographic isolation of the Americas allowed for unique agricultural development," the stance is neutral or favorable. This allows you to query the graph for the professor's opinion on a topic, rather than just the topic itself.
+
+    claimType: Updated to match our earlier prompt. This lets you filter the graph depending on whether you are looking for what Jiang thinks happened (causal_analysis) versus what he thinks will happen (geopolitical_prediction).
+
+    status: Keeping this from the financial model is incredibly useful. For his "Predictive History" claims about the future, you can actually update the graph over time to mark his geopolitical predictions as verified or refuted as real-world events unfold!
