@@ -1,0 +1,89 @@
+\documentclass[12pt,a4paper]{article}
+
+% ============================================================
+% PACKAGES
+% ============================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage[numbers]{natbib}
+
+% ============================================================
+% PAGE SETUP
+% ============================================================
+\geometry{left=3cm, right=2cm, top=3cm, bottom=2cm}
+\onehalfspacing
+
+% ============================================================
+% CODE LISTING STYLE
+% ============================================================
+\definecolor{codebg}{rgb}{0.95,0.95,0.95}
+\definecolor{codegreen}{rgb}{0.0,0.5,0.0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codeblue}{rgb}{0.0,0.0,0.7}
+
+\lstset{
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    captionpos=b,
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{codeblue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{red},
+    frame=single,
+    numbers=left,
+    numbersep=5pt,
+    showstringspaces=false,
+    tabsize=2,
+}
+
+% ============================================================
+% TITLE
+% ============================================================
+\title{
+    \textbf{GraphRAG for Conversational History Class Data:}\\
+    \large A Custom Knowledge Graph and Retrieval Architecture\\with Multi-Pass Extraction
+}
+\author{Eduardo Birkheuer\\
+    \small Universidade Federal do Rio Grande do Sul (UFRGS)\\
+    \small Instituto de Inform\'{a}tica --- Ci\^{e}ncia da Computa\c{c}\~{a}o
+}
+\date{2026}
+
+% ============================================================
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This work presents the design and implementation of a custom GraphRAG system for transforming English history class transcriptions into a queryable knowledge graph. The system extracts structured knowledge---entities, relationships, claims, and predictions---from approximately 134 episodes of lecture content using a multi-pass extraction pipeline with schema-constrained structured outputs. Extracted knowledge is stored in a Neo4j property graph with bi-temporal metadata, and a hybrid retrieval layer combines vector similarity search, graph traversal, text-to-Cypher generation, and community-based thematic summaries, exposed to client-side LLMs via an MCP server. The architecture is custom-built rather than framework-dependent, justified by three empirical findings: schema-constrained extraction achieves 98.8\% precision versus open extraction's 40\% predicate error rate; the LoCoMo benchmark demonstrates that transforming dialogue into structured assertions dramatically outperforms raw transcript retrieval; and no existing framework natively supports the intersection of claim reification, bi-temporal modeling, and domain-specific historical ontology that this system requires.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% ============================================================
+% Include sections
+% ============================================================
+\input{sections/02_conceitos}
+\input{sections/03_trabalhos_relacionados}
+\input{sections/04_desenvolvimento}
+
+% ============================================================
+% REFERENCES
+% ============================================================
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

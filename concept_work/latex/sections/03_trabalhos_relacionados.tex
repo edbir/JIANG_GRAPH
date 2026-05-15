@@ -1,0 +1,87 @@
+\section{Related Work}
+\label{sec:related}
+
+This section positions the present work in the context of existing literature, identifying the gaps that motivate the construction of a custom pipeline.
+
+\subsection{Existing GraphRAG Systems}
+
+\textbf{Microsoft GraphRAG}~\cite{edge2024graphrag} is the seminal work that formalized the combination of knowledge graphs with RAG for sensemaking tasks. The system extracts entities and relationships via LLM, applies hierarchical Leiden community detection, and generates per-community summaries. Two query modes---local (entity-centric) and global (community summaries)---cover point and thematic queries respectively.
+
+Despite its conceptual contribution, Microsoft GraphRAG presents significant practical limitations. Its default extraction recognizes only four entity types (Person, Organization, Geography, Event), insufficient for capturing stances, predictions, and causal analyses present in history lectures. The global query mode consumes approximately 610,000 tokens per query---versus $\sim$100 tokens for LightRAG, a 6,000$\times$ difference. The official repository warns: ``Using GraphRAG with your data out of the box may not yield the best possible results.'' Shereshevsky (2025) reports indexing costs of \$33K for large datasets, infeasible for a 134-episode corpus requiring incremental updates.
+
+\textbf{LightRAG}~\cite{guo2024lightrag} proposes a lightweight alternative: open extraction without schema constraints, with incremental updates via graph union and efficient queries ($\sim$100 tokens). Its simplicity comes at a cost: zero schema constraints produce inconsistent relationship types and entity duplication. The Plumber framework analysis demonstrates that open extraction results in 40\% predicate errors. The paper was withdrawn from ICLR 2025 review.
+
+\textbf{LazyGraphRAG}~\cite{edge2024lazygraphrag} eliminates upfront summarization, with indexing cost at 0.1\% of full GraphRAG. In evaluation, it achieved 95 of 96 statistical wins against Vector RAG, GraphRAG Local/Global/DRIFT, LightRAG, RAPTOR, and TREX. It is the default recommendation for non-conversational document corpora. However, it possesses no features for dialogue data: no speaker attribution, no temporal modeling, no claim reification.
+
+\textbf{GraphRAG-Bench}~\cite{xiang2026graphragbench} provides the first rigorous cross-framework benchmark, concluding that GraphRAG frequently underperforms vanilla RAG on real-world tasks, offering guidelines on when graph structure provides measurable benefits---typically in multi-hop, comparative, and global synthesis queries.
+
+\subsection{Conversational Memory Systems}
+
+\textbf{Graphiti/Zep}~\cite{rasmussen2025graphiti} is the most mature system for conversational knowledge graphs. With 22,800+ GitHub stars and 25,000+ weekly PyPI downloads, it defines the graph as $G = (N, E, \varphi)$ with three subgraphs: Episode (preserves raw data), Entity (extracted semantic knowledge), and Community (thematic summaries).
+
+Graphiti's central innovation is its bi-temporal model: every semantic edge carries four timestamps---\texttt{created\_at} (when ingested), \texttt{expired\_at} (when invalidated in system), \texttt{valid\_at} (when fact became true in reality), and \texttt{invalid\_at} (when fact stopped being true). When contradictory information arrives, the old edge is invalidated and the fact text is regenerated to reflect evolution.
+
+Despite its temporal sophistication, Graphiti is designed for personal assistant memory---tracking user preferences, personal facts, previous conversations. Its entity extraction is generic, without domain ontology. For specific historical analysis (figures, empires, battles, causal relationships between events), fine-grained control over entity and relationship types is required.
+
+\textbf{SGMem}~\cite{wu2025sgmem} represents dialogue as sentence-level graphs within chunked units, capturing turn-, round-, and session-level associations, outperforming baselines on LongMemEval and LoCoMo.
+
+\textbf{MAGMA}~\cite{jiang2026magma} extends the paradigm with orthogonal graphs (semantic, temporal, causal, entity) per memory item, achieving 45.5\% higher reasoning accuracy via policy-guided traversal.
+
+\textbf{``Does Memory Need Graphs?''}~\cite{hu2026memorygraphs} introduces a unified framework decomposing dialog memory systems into core components. Its key finding: sentences-as-nodes can outperform entity-level KG approaches for conversational memory.
+
+\subsection{Knowledge Extraction from Dialogue}
+
+\textbf{OKE-D}~\cite{rook2025oked} (Rook, ISWC 2025 Doctoral Consortium) is the most directly relevant academic reference. It formalizes Open Knowledge Extraction from Dialogue and identifies four unique structural challenges: (1) cross-turn assertions with higher subject-object span distances than documents; (2) anaphora and pronoun density requiring robust coreference resolution; (3) dialogue acts where not all utterances assert facts; (4) multiple perspectives where speakers express conflicting views.
+
+Rook proposes a perspective-aware dialogue ontology integrating speaker identity, temporal context, and dialogue acts via SIO and PROV-O. The work demonstrates that even frontier models (Gemini 2.5 Pro) fail to extract important knowledge from dialogues without specialized prompting.
+
+\textbf{LoCoMo}~\cite{maharana2024locomo} is the most relevant long-term conversational memory benchmark, evaluating over $\sim$300 turns and up to 35 sessions. Key findings: human F1 = 87.9\%, GPT-3.5-16K = 37.8\%, best RAG = 41.4\%---LLMs lag 56\% behind humans. The most critical finding: ``RAG does particularly well when dialogues are transformed into a database of assertions about each speaker's life and persona''---direct validation of the knowledge graph extraction approach.
+
+\textbf{KGGen}~\cite{mo2025kggen} demonstrates multi-stage extraction (extract$\rightarrow$cluster$\rightarrow$normalize) scoring 66.07\% on the MINE benchmark versus GraphRAG's 47.80\% and OpenIE's 29.84\%---an 18\% improvement.
+
+\textbf{SAC-KG}~\cite{chen2024sackg} proposes a Generator$\rightarrow$Verifier$\rightarrow$Pruner pipeline achieving 89.32\% precision at 1M+ node scale, representing $>$20\% increase over prior state of the art.
+
+\textbf{CORE-KG} demonstrates via ablation that removing coreference resolution causes a 28.32\% increase in node duplication, and that removing structured prompts causes 73\% more noise---quantitative evidence for each pipeline component.
+
+\subsection{Claim Reification and Argumentation Frameworks}
+
+The modeling of claims as first-class nodes in knowledge graphs is grounded in multiple traditions:
+
+\textbf{AIF (Argument Interchange Format)} defines I-Nodes (claims/information), S-Nodes (scheme applications subdivided into inference, conflict, and preference), and L-Nodes (speech acts in dialogue). An AIF argument graph is a bipartite-like structure where edges always connect I-Nodes to S-Nodes and vice versa.
+
+\textbf{DialAM-2024}~\cite{ruizdolz2024dialam} presents the first shared task in dialogical argument mining using Inference Anchoring Theory, modeling dialogue with locution nodes (what was said), proposition nodes (claims), and relation nodes (argumentative/illocutionary).
+
+\textbf{Discourse Graphs}~\cite{chan2024discourse} model knowledge claims linked to supporting evidence through typed edges (supports, opposes, informs), with 3 years of practical deployment in distributed research communities.
+
+\textbf{Kialo} demonstrates practical scalability: 18,000+ debates and 720,000+ claims in production, using a tree structure where each claim is Pro or Con relative to its parent.
+
+The \textbf{Neo4j Intermediate Node Pattern} provides the technical basis for reification in property graphs: replacing a relationship that needs rich metadata with a node, enabling arbitrary properties, relationships to other claims, and independent lifecycle tracking.
+
+\subsection{Comparative Analysis}
+
+Table~\ref{tab:comparison} compares the proposed system with existing alternatives across dimensions relevant to the history lecture use case.
+
+\begin{table}[htbp]
+\centering
+\caption{Comparative analysis of GraphRAG systems}
+\label{tab:comparison}
+\small
+\begin{tabularx}{\textwidth}{lXXXX}
+\toprule
+\textbf{Dimension} & \textbf{This work} & \textbf{MS GraphRAG} & \textbf{LightRAG} & \textbf{Graphiti} \\
+\midrule
+Claim reification & Native (first-class nodes) & Not supported & Not supported & Not supported \\
+Temporal modeling & Bi-temporal & None & None & 4 timestamps \\
+Schema control & Full (custom ontology) & 4 fixed types & Open extraction & Generic entities \\
+Extraction quality & Schema-constrained & Generic & 40\% errors & Generic \\
+Cost (134 episodes) & \$15--45 & \$33K (est.) & \$15--30 & Variable \\
+Incremental updates & Idempotent MERGE & Partial reindex & Graph union & Dynamic \\
+Community detection & Leiden (hierarchical) & Leiden & None & Label prop. \\
+Tokens per query & $\sim$100--1000 & $\sim$610,000 & $\sim$100 & Variable \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Positioning}
+
+No existing system addresses the intersection of: (1) claim modeling as first-class entities with claim-to-claim relationships; (2) multi-pass extraction with schema constraints for the historical domain; (3) temporal tracking of verifiable geopolitical predictions; (4) adaptive hybrid retrieval by query type. The present work fills this gap by constructing a custom pipeline incorporating the best patterns from each system---adapted for a history lecture domain where claims, predictions, and causal relationships constitute the highest-value analytical content.

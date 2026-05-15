@@ -1,0 +1,106 @@
+\section{Background and Technologies}
+\label{sec:conceitos}
+
+This section presents the theoretical concepts and technologies required to understand the proposed architecture.
+
+\subsection{Retrieval-Augmented Generation (RAG)}
+
+Large Language Models (LLMs) have a fundamental limitation: their knowledge is static, bounded by training data. Additionally, LLMs frequently produce factually incorrect responses---a phenomenon known as hallucination~\cite{huang2023survey}. Retrieval-Augmented Generation (RAG) addresses both problems by combining an information retrieval component with the generative model~\cite{lewis2020rag}.
+
+The typical RAG pipeline operates in three stages:
+
+\begin{enumerate}
+    \item \textbf{Indexing:} Documents are split into chunks ($\sim$500--1500 tokens) and converted into high-dimensional numerical vectors (embeddings) via models such as OpenAI's \texttt{text-embedding-3-small}. These vectors are stored in a vector database.
+    
+    \item \textbf{Retrieval:} When a user submits a query, it is also converted into an embedding. The system searches the vector store for chunks whose embeddings are most similar to the query (typically via cosine similarity).
+    
+    \item \textbf{Generation:} Retrieved chunks are injected into the LLM's prompt as context, and the model generates a response grounded in this information.
+\end{enumerate}
+
+RAG represents a significant advance: it enables access to current information without retraining, grounds responses in verifiable sources, and reduces hallucinations. However, the vector-based approach has structural limitations. Text chunks are treated as flat, independent units---all relational information between entities, causality between events, and argumentative structure is lost in the fragmentation process. For domains where relationships and structure are central to understanding---such as history, where events cause other events and figures interact in complex networks---these limitations become especially problematic.
+
+\subsection{Knowledge Graphs}
+
+A Knowledge Graph (KG) is a data structure that represents information as a graph, where nodes represent entities (people, places, concepts) and edges represent relationships between them~\cite{hogan2021knowledge}. The basic unit of information is the triple: (subject)--[predicate]$\rightarrow$(object). For example: (Alexander the Great)--[CONQUERED]$\rightarrow$(Persian Empire).
+
+Two primary paradigms exist for knowledge graph representation:
+
+\textbf{RDF (Resource Description Framework):} A W3C standard based on subject-predicate-object triples. Uses URIs for global identification, formal ontologies (OWL) for logical reasoning, and SPARQL as query language. Ideal for interoperability and Linked Data, but requires complex mechanisms (blank nodes, reification via named graphs) for attaching properties to relationships.
+
+\textbf{Property Graphs:} A model where both nodes and edges can carry arbitrary properties (key-value pairs). The predominant query language is Cypher, based on visual pattern matching. Cypher has been internationally standardized as GQL (ISO/IEC 39075:2024)---the first new ISO database language since SQL in 1987.
+
+This work adopts the property graph model for three reasons: (1) schema flexibility---properties can be added to nodes and edges without restructuring; (2) query expressiveness---Cypher is more natural for multi-hop traversal than SPARQL; (3) alignment with the Neo4j ecosystem, which offers native vector indexes, community detection via GDS, and mature LLM integration.
+
+\textbf{Ontology} refers to the schema defining which entity types and relationship types are permitted in the graph. A well-defined ontology serves as a contract: it guides extraction (the LLM knows what to look for), prevents inconsistencies (invalid types are rejected), and enables predictable queries (consumers know what exists in the graph).
+
+\textbf{Reification} is the pattern of transforming a relationship into an intermediate node to allow it to have its own properties and relationships. Instead of modeling a claim as a property on an edge between two entities, a Claim node is created that connects to its source utterance, the episode in which it was stated, and the entities it references. Neo4j documents this pattern as the ``Intermediate Node Pattern'' in its official data modeling course.
+
+\subsection{GraphRAG}
+
+GraphRAG combines Knowledge Graphs with Retrieval-Augmented Generation, using graph structure to enrich the context provided to the LLM beyond what pure vector search offers.
+
+The seminal Microsoft work~\cite{edge2024graphrag} established the term and demonstrated its efficacy in \textit{sensemaking} tasks---global comprehension of large corpora. The Microsoft GraphRAG architecture operates in two phases:
+
+\textbf{Indexing:} Texts are processed by an LLM that extracts entities and relationships, building a knowledge graph. Over this graph, the Leiden algorithm detects communities (clusters of densely connected entities). Each community receives an LLM-generated summary at multiple hierarchy levels.
+
+\textbf{Querying:} ``Local'' queries (about specific entities) use entity search with neighborhood expansion. ``Global'' queries (about general themes) synthesize summaries of relevant communities.
+
+GraphRAG approaches outperform vector-based RAG in 70--80\% of complex sensemaking tasks~\cite{edge2024graphrag}. However, the Microsoft implementation has limitations: it recognizes only 4 entity types (Person, Organization, Geography, Event); consumes $\sim$610,000 tokens per global query; requires full reindexing for updates; and has no optimizations for conversational data.
+
+Relevant alternatives include \textbf{LightRAG}~\cite{guo2024lightrag}, which uses open extraction with $\sim$100 tokens per query (6,000$\times$ more efficient), and \textbf{LazyGraphRAG}~\cite{edge2024lazygraphrag}, which eliminates upfront summarization at 0.1\% of full GraphRAG indexing cost, achieving 95/96 statistical wins against all alternatives.
+
+The concept of \textbf{hybrid retrieval}---combining vector search (semantic) with graph traversal (structural)---is central to this work. Vector search finds relevant entry points; graph traversal expands context with relationships, claims, and connected entities that pure semantic similarity would not capture.
+
+\subsection{Neo4j and Cypher}
+
+Neo4j is the most widely used graph database globally, implementing the property graph model. Its relevance to this work stems from specific capabilities:
+
+\textbf{Cypher} is Neo4j's query language, based on visual pattern matching where graph patterns are expressed with ASCII art: \texttt{(a:Person)-[:KNOWS]->(b:Person)}. Version 5.x introduced native vector query support, eliminating the need for a separate vector database.
+
+\textbf{Vector Indexes} enable semantic similarity search directly within Neo4j. Each node can store an embedding vector and be queried via approximate nearest neighbor (ANN):
+
+\begin{lstlisting}[language=SQL, caption={Neo4j vector similarity query}]
+CALL db.index.vector.queryNodes(
+  'utterance_embeddings', 5, $queryEmbedding
+) YIELD node AS chunk, score
+\end{lstlisting}
+
+\textbf{MERGE} is the idempotent upsert operator: it creates a node/relationship if it does not exist, or finds the existing one if already created. With \texttt{ON CREATE SET} and \texttt{ON MATCH SET} clauses, it enables progressive enrichment without duplication---essential for an incremental ingestion pipeline.
+
+\textbf{Neo4j GDS (Graph Data Science)} is a library of graph algorithms including community detection (Leiden, Louvain), centrality (PageRank, Betweenness), and similarity. For this work, the Leiden algorithm detects thematic communities in the entity graph.
+
+\subsection{Knowledge Extraction with LLMs}
+
+The construction of Knowledge Graphs from unstructured text traditionally relied on NLP pipelines (NER + Relation Extraction + Coreference Resolution). With LLMs, end-to-end extraction via prompting became possible---feeding text and instructions, the model returns structured entities and relationships.
+
+\textbf{Single-pass vs.\ Multi-pass.} Requesting that the LLM extract entities, relationships, claims, and resolve coreferences in a single call produces suboptimal results---the model does everything superficially. Research converges on multi-pass superiority: ECR demonstrates +16\% in triple F1 (single vs.\ multi-pass); KGGen~\cite{mo2025kggen} achieves 18\% improvement over GraphRAG via multi-stage extraction (extract$\rightarrow$cluster$\rightarrow$normalize); SAC-KG~\cite{chen2024sackg} reaches 89.32\% precision with a Generator$\rightarrow$Verifier$\rightarrow$Pruner pipeline at 1M+ node scale.
+
+\textbf{Structured Outputs} are a constrained decoding mechanism offered by LLM providers (OpenAI Structured Outputs, August 2024) that guarantees 100\% compliance with a provided JSON Schema. Unlike asking the model to ``return JSON'' (compliance $<$40\% with GPT-4-0613), structured outputs use restrictive grammars during decoding, making it impossible to generate output outside the schema. Benchmarks (JSONSchemaBench, ICML 2025) demonstrate that constrained decoding not only guarantees format but improves downstream quality by up to 4\%.
+
+\textbf{Entity Resolution} is the process of identifying when different names refer to the same real-world entity. Modern approaches use cascades from cheap to expensive: text normalization (40\% of duplicates), fuzzy string matching via \texttt{token\_sort\_ratio} (35\%), embedding similarity (20\%), and LLM judgment for only the remaining 5\% of genuinely ambiguous pairs. CORE-KG demonstrated that omitting coreference resolution causes a 28.32\% increase in node duplication.
+
+\subsection{Community Detection and the Leiden Algorithm}
+
+Community detection in graphs identifies sets of nodes that are more densely connected to each other than to the rest of the graph. Intuitively, communities correspond to thematic clusters---in a history graph, a community might group ``Roman Empire,'' ``Julius Caesar,'' ``Roman Senate,'' and ``Roman Civil War.''
+
+The \textbf{Louvain algorithm}~\cite{blondel2008louvain} is the classic method: it optimizes modularity by iteratively moving nodes between communities. However, Louvain can produce poorly-connected communities (internally disconnected).
+
+The \textbf{Leiden algorithm}~\cite{traag2019leiden} resolves this guarantee: beyond optimizing modularity, it ensures all detected communities are internally well-connected. Leiden adds a refinement phase that Louvain lacks, resulting in superior partition quality.
+
+\textbf{Hierarchical communities} are obtained by running Leiden with intermediate communities enabled, producing partitions at multiple resolution levels: Level 0 (granular---``Alexander's campaigns in Persia''), Level 1 (medium---``Hellenistic Conquests''), Level 2 (broad---``Classical Antiquity''). The gamma parameter controls resolution: larger values produce smaller, more numerous communities.
+
+For \textbf{incremental updates}, the seeded Leiden mechanism reuses the previous partition as a starting point. When a new episode adds entities to the graph, only affected communities are repartitioned---avoiding recomputing the entire graph. Dynamic Frontier Leiden~\cite{sahu2024dfleiden} formalizes this process, achieving comparable modularity to static Leiden at dramatically reduced runtime.
+
+\subsection{Model Context Protocol (MCP)}
+
+The Model Context Protocol (MCP) is an open standard for connecting AI systems to external data sources. Announced by Anthropic in November 2024 and subsequently donated to the Agentic AI Foundation under the Linux Foundation (December 2025, co-founded with Block and OpenAI), the protocol reached 97 million monthly SDK downloads and 10,000+ servers by late 2025.
+
+MCP operates over JSON-RPC 2.0 and defines three primitives:
+
+\begin{itemize}
+    \item \textbf{Tools:} Functions the LLM can invoke (e.g., search the graph, compare entities)
+    \item \textbf{Resources:} Static data the LLM can read (e.g., the graph schema)
+    \item \textbf{Prompts:} Reusable templates for common interactions
+\end{itemize}
+
+The advantage of MCP over traditional REST APIs is that the client-side LLM can autonomously decide which tool to invoke based on the user's question. The system becomes self-navigable without a dedicated UI---the LLM \textit{is} the interface.

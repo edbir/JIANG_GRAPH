@@ -1,0 +1,188 @@
+\section{System Design and Implementation}
+\label{sec:development}
+
+This section describes the architecture, implementation, and technical decisions of the proposed system.
+
+\subsection{Architecture Overview}
+
+The system is organized in four layers with well-defined responsibilities: a Client Layer (any MCP-compatible LLM), an MCP Server (6 domain tools), a Retrieval Layer (4 adaptive strategies), and a Neo4j Graph (vector + structural indexes), fed by an Ingestion Pipeline (download $\rightarrow$ transcribe $\rightarrow$ clean $\rightarrow$ chunk $\rightarrow$ extract $\rightarrow$ resolve $\rightarrow$ upsert $\rightarrow$ embed $\rightarrow$ communities).
+
+The decision to build a custom pipeline (versus adopting a framework) is justified by converging evidence: (1) schema-constrained extraction achieves 98.8\% precision versus 40\% error with open extraction (ODKE+, Plumber); (2) no existing framework models claims as first-class nodes; (3) the estimated cost of \$15--45 for 134 episodes makes the project academically viable versus \$33K for Microsoft GraphRAG at similar scale.
+
+The technology stack consists of: Python 3.11+ for all logic; OpenAI API exclusively for LLM calls and embeddings (eliminating variability between providers); Neo4j 5.x as graph database (native vector indexes, GDS for Leiden, Cypher for queries); FastMCP for the MCP server.
+
+\subsection{Knowledge Graph Schema}
+
+\subsubsection{Design Principles}
+
+The schema follows three principles derived from the literature:
+
+\textbf{Conversation-centric hierarchy.} The atomic unit is a lecture chunk, not a document paragraph. The hierarchy Episode $\rightarrow$ Segment $\rightarrow$ Utterance mirrors Graphiti's Episode subgraph~\cite{rasmussen2025graphiti} and Di Bratto et al.'s (2021) utterance chaining pattern, preserving conversational structure that flat chunking destroys.
+
+\textbf{Claims as first-class nodes (reification).} Claims, predictions, and opinions are modeled as intermediate nodes following Neo4j's official Intermediate Node Pattern, AIF's I-Node formalism, and Kialo's production-validated claim-tree architecture. Reification enables: arbitrary metadata (confidence, stance, verification status), claim-to-claim relationships (supports, contradicts, revises), and traceable provenance to the exact lecture moment.
+
+\textbf{Bi-temporal metadata.} Every claim carries two temporal dimensions: when it was stated (via Episode publishDate, through the content hierarchy) and what time period it references (via explicit date properties on claims/predictions).
+
+\subsubsection{Node Types}
+
+The ontology defines 9 node types in 3 layers:
+
+\textbf{Content Layer:} Episode (a single lecture), Segment (coherent topic block, $\sim$10--15 minutes), Utterance (text chunk, $\sim$1500 tokens---the vector search unit).
+
+\textbf{Entity Layer:} Person (historical figures, leaders, philosophers), Organization (empires, nations, dynasties, religions), Topic (concepts, ideologies, geographic regions), Event (wars, battles, treaties, revolutions).
+
+\textbf{Analytical Layer:} Claim (historical interpretation, geopolitical prediction, or causal assertion by Prof.\ Jiang), Community (thematic cluster detected by Leiden).
+
+\subsubsection{Relationship Types}
+
+Key relationships include:
+\begin{itemize}
+    \item Content hierarchy: \texttt{HAS\_SEGMENT}, \texttt{HAS\_CHUNK}, \texttt{NEXT\_SEGMENT}, \texttt{NEXT\_CHUNK}
+    \item Historical dynamics: \texttt{ROLE\_IN}, \texttt{PARTICIPATED\_IN}, \texttt{LED\_TO}, \texttt{CAUSED}
+    \item Entity grounding: \texttt{MENTIONS} (Utterance $\rightarrow$ Entity)
+    \item Claim network: \texttt{EXTRACTED\_FROM}, \texttt{STATED\_DURING}, \texttt{ABOUT}, \texttt{SUPPORTS}, \texttt{CONTRADICTS}, \texttt{REVISES\_PREDICTION}
+    \item Communities: \texttt{IN\_COMMUNITY}, \texttt{PARENT\_COMMUNITY}
+\end{itemize}
+
+\subsubsection{Expected Scale}
+
+For 134 episodes: $\sim$134 Episode nodes, $\sim$1,300 Segments, $\sim$30,000 Utterances, $\sim$100--300 Persons, $\sim$100 Organizations, $\sim$100--200 Topics, $\sim$200 Events, $\sim$3,000--8,000 Claims, and $\sim$80,000--250,000 relationships---comfortably within Neo4j Community Edition capacity.
+
+\subsection{Preprocessing Pipeline}
+
+\subsubsection{Download and Transcription}
+
+Audio is extracted from YouTube videos via \texttt{yt-dlp} (mp3 format, 64kbps---sufficient for speech) and transcribed using Groq's Whisper large-v3. For $\sim$1-hour lectures exceeding Groq's 25~MB limit, audio is segmented into 20-minute blocks via \texttt{ffmpeg}, transcribed individually, and concatenated. The pipeline is idempotent: existing transcriptions are skipped.
+
+\subsubsection{Text Cleaning}
+
+Raw audio transcriptions contain artifacts that waste tokens and confuse extraction: (1) Unicode normalization; (2) removal of transcription artifacts (\texttt{[inaudible]}, timestamps); (3) removal of filler words (``uh,'' ``you know''); (4) stutter removal (``the the Roman'' $\rightarrow$ ``the Roman''); (5) whitespace normalization. The cleaning is conservative: only obvious noise is removed without altering semantic content.
+
+\subsubsection{Two-Pass Chunking}
+
+Fixed-size chunking destroys segment boundaries. The system employs a two-pass strategy:
+
+\textbf{Level 1---LLM Segmentation:} Text is split into sentences (via regex with abbreviation protection). Sentences are grouped into sliding windows of 20 with overlap of 3. For each window, GPT-4o-mini identifies topic boundaries. Boundaries are deduplicated and used to construct Segments---variable-length blocks, each about one coherent topic.
+
+\textbf{Level 2---Deterministic Token Split:} Each Segment is split into chunks of at most 1500 tokens. Splitting never occurs mid-sentence. Three sentences overlap between consecutive chunks, ensuring cross-boundary assertions are captured. Chunks below 200 tokens are merged into the previous chunk.
+
+The 1500-token target balances extraction quality (more context per call) against cost (fewer tokens per call). The 3-sentence overlap is based on Rook's (ISWC 2025) finding about higher subject-object span distances in dialogue data.
+
+\subsection{Multi-Pass Extraction Pipeline}
+
+\subsubsection{Justification}
+
+Single-pass extraction is documented to be inferior. Research converges: ECR demonstrates +16\% in triple F1; KGGen~\cite{mo2025kggen} +18\% over GraphRAG; SAC-KG~\cite{chen2024sackg} 89.32\% precision with three components. Each pass with a focused task allows the LLM to concentrate its capacity on one problem at a time.
+
+\subsubsection{Pass Architecture}
+
+The pipeline uses five sequential passes with tiered model selection, as shown in Table~\ref{tab:passes}.
+
+\begin{table}[htbp]
+\centering
+\caption{Multi-pass extraction architecture}
+\label{tab:passes}
+\begin{tabular}{clll}
+\toprule
+\textbf{Pass} & \textbf{Task} & \textbf{Model} & \textbf{Justification} \\
+\midrule
+1 & Entity extraction & GPT-4o-mini & High volume, cheap \\
+2 & Relationship extraction & GPT-4o-mini & Same chunks, entities as context \\
+3 & Claim/opinion extraction & GPT-4o & Nuanced stance detection \\
+4 & Coreference resolution & GPT-4o & Deep contextual reasoning \\
+5 & Entity resolution & Embeddings + GPT-4o-mini & Only 5\% need LLM \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Pass Details}
+
+\textbf{Pass 1 (Entity Extraction):} Input is a chunk plus episode context. Output is a list of entities with canonical name, type (constrained to person/organization/topic/event), description, aliases, and type-specific properties. The schema is enforced via OpenAI Structured Outputs---the model is physically unable to return an invalid entity type.
+
+\textbf{Pass 2 (Relationship Extraction):} Same chunk plus entities from Pass 1 injected as context. The model focuses on finding relationships between \textit{known} entities rather than re-extracting them. Relationship types are constrained to 6 schema-valid types.
+
+\textbf{Pass 3 (Claim Extraction):} The most critical pass---identifies what Prof.\ Jiang argues, interprets, predicts, and analyzes. Distinguishes factual assertions, historical interpretations, geopolitical predictions, and causal analyses. GPT-4o is used because stance detection requires nuanced understanding.
+
+\textbf{Pass 4 (Coreference Resolution):} Operates on a sliding window of 4 consecutive chunks, resolving ambiguous references (``he,'' ``the empire'') to canonical entity names from Pass 1. The window is necessary because pronouns often refer to entities in previous chunks.
+
+\subsubsection{Structured Outputs and Caching}
+
+All passes use OpenAI Structured Outputs with Pydantic schemas: responses are guaranteed valid JSON conforming to the defined schema. Every LLM call is cached by \texttt{hash(system\_prompt + user\_prompt + model)}: reprocessing costs \$0 (cache hit), enabling idempotent pipelines and facilitating debugging via direct inspection of cached responses.
+
+\subsection{Entity Resolution}
+
+After extraction, the same entity appears with different names across chunks and episodes. The resolution module uses a cascade routing from cheap to expensive:
+
+\begin{enumerate}
+    \item \textbf{Exact match} ($\sim$40\% of duplicates): Normalizes case, whitespace, accents. Cost: zero.
+    \item \textbf{Fuzzy string matching} ($\sim$35\%): RapidFuzz \texttt{token\_sort\_ratio} $>$ 85 between same-type entities. Captures ``Philip the Second'' $\approx$ ``Philip II.'' Cost: negligible.
+    \item \textbf{Embedding similarity} ($\sim$20\%): Cosine similarity $>$ 0.85 between embeddings of ``name: description.'' Captures ``USA'' $\approx$ ``United States'' when descriptions overlap. Cost: one embedding call per entity.
+    \item \textbf{LLM judgment} ($\sim$5\%): Only genuinely ambiguous pairs go to GPT-4o-mini for merge/no-merge decision with justification.
+\end{enumerate}
+
+The guiding principle is conservative: \textbf{when in doubt, do not merge}. A false positive (incorrect merge) corrupts the graph; a false negative (keeping duplicates) is harmless and correctable. The output is a merge map with transitive closure resolved.
+
+\subsection{Graph Upsert}
+
+Insertion follows Neo4j's MERGE pattern with the fundamental rule: never MERGE entire patterns with unbound variables; always bind nodes first, then MERGE relationships between bound nodes.
+
+Insertion order ensures endpoints exist before creating relationships: (1) Episode, (2) Segments + chains, (3) Utterances + chains, (4) Entities + MENTIONS, (5) Claims + provenance/grounding, (6) Entity-Entity relationships.
+
+IDs are deterministic: \texttt{make\_entity\_id("person", "Alexander the Great")} $\rightarrow$ \texttt{"person-alexander-the-great"}. Same input always produces the same ID, ensuring MERGE finds existing nodes. Progressive enrichment via \texttt{ON MATCH SET} updates descriptions (keeping the longer one) and accumulates aliases.
+
+\subsection{Community Detection and Summarization}
+
+After all entities and relationships are inserted, the Leiden algorithm is executed via Neo4j GDS:
+
+\begin{enumerate}
+    \item \textbf{Projection:} Entity graph (Person, Organization, Topic) with co-occurrence relationships projected in-memory with UNDIRECTED orientation.
+    \item \textbf{Leiden:} Executed with hierarchical output and fixed random seed for reproducibility.
+    \item \textbf{Summarization:} For each community, members and internal relationships are collected and sent to an LLM that generates a descriptive thematic summary.
+    \item \textbf{Storage:} Summaries saved as Community nodes with embeddings for vector retrieval.
+\end{enumerate}
+
+For incremental updates, seeded Leiden reuses the previous partition. Only communities whose membership changed need re-summarization---typically 5--15 communities per new episode.
+
+\subsection{Retrieval Layer}
+
+\subsubsection{Query Classification}
+
+A lightweight classifier (GPT-4o-mini, temperature 0, structured output) categorizes each query into one of four types, each routed to an optimal strategy: factual (vector + graph fan-out), comparative (Cypher template by entity), temporal (chronological claim aggregation), or thematic (community summaries).
+
+\subsubsection{Vector + Graph Fan-Out}
+
+The core retrieval pattern: vector search finds semantically relevant chunks; Cypher traversal expands context with episode metadata, connected entities, and extracted claims:
+
+\begin{lstlisting}[language=SQL, caption={Vector search with graph fan-out}]
+CALL db.index.vector.queryNodes(
+  'utterance_embeddings', $topK, $queryEmbedding
+) YIELD node AS utterance, score
+OPTIONAL MATCH (utterance)<-[:HAS_CHUNK]-(seg)<-[:HAS_SEGMENT]-(ep)
+OPTIONAL MATCH (claim:Claim)-[:EXTRACTED_FROM]->(utterance)
+OPTIONAL MATCH (claim)-[:ABOUT]->(entity)
+RETURN utterance.text, score, ep.title,
+  collect(DISTINCT {claim: claim.text, entity: entity.name})
+ORDER BY score DESC
+\end{lstlisting}
+
+\subsubsection{Text-to-Cypher with Self-Healing}
+
+For queries that don't fit templates, the system generates Cypher from natural language with full graph schema, few-shot examples, and read-only constraints. When a generated query fails, the error and schema are fed back to the LLM for self-correction---up to 2 retries.
+
+\subsubsection{Reciprocal Rank Fusion}
+
+Results from multiple strategies are fused via RRF~\cite{cormack2009rrf}:
+\begin{equation}
+    \text{RRF\_score}(d) = \sum_{r \in R} \frac{1}{k + \text{rank}_r(d)}, \quad k = 60
+\end{equation}
+This combines rankings from different strategies without requiring score calibration.
+
+\subsection{MCP Server}
+
+The server exposes 6 tools: \texttt{search\_lectures} (semantic search + fan-out), \texttt{find\_claims} (filtered claim search), \texttt{compare\_entities} (side-by-side claims), \texttt{topic\_timeline} (chronological evolution), \texttt{run\_cypher} (NL $\rightarrow$ Cypher for ad-hoc queries), and \texttt{get\_schema} (schema self-discovery). Design principles: domain tools for common queries (optimized, fast, easy to use correctly); generic tools for exploration (flexibility for unforeseen queries); capped results (prevent context overflow); structured data returned (client LLM handles generation).
+
+\subsection{Cost and Optimizations}
+
+Three mechanisms reduce costs: (1) \textbf{Prompt caching} (50\% discount)---system prompt + schema identical across chunks, sequential processing keeps prefix cached; (2) \textbf{Tiered model usage}---GPT-4o-mini handles 80\% of calls at $\sim$10$\times$ lower cost; (3) \textbf{Local caching}---hash of each call stored on disk, reprocessing costs \$0.
+
+Estimated cost per episode ($\sim$1 hour, $\sim$17K tokens): Passes 1--2 $\sim$\$0.02; Pass 3 $\sim$\$0.04; Pass 4 $\sim$\$0.02; Embeddings $\sim$\$0.01; Community summarization (amortized) $\sim$\$0.01. \textbf{Total per episode: $\sim$\$0.10. For 134 episodes: $\sim$\$13--15}---orders of magnitude below Microsoft GraphRAG's estimated \$33K at similar scale.
