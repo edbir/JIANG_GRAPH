@@ -1,0 +1,21 @@
+# Core
+neo4j>=5.0.0
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+
+# LLM and Embeddings
+openai>=1.0.0
+
+# Entity Resolution
+rapidfuzz>=3.0.0
+numpy>=1.24.0
+
+# MCP Server
+mcp>=1.0.0
+
+# Utilities
+tiktoken>=0.5.0
+python-dotenv>=1.0.0
+
+# Audio download (for transcription workflow)
+yt-dlp>=2024.0.0
