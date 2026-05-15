@@ -1,0 +1,57 @@
+# =============================================================================
+# Docker Compose — Neo4j with GDS Plugin
+# =============================================================================
+#
+# WHAT THIS DOES:
+#   Runs a Neo4j 5.x instance with the Graph Data Science (GDS) plugin
+#   pre-installed. GDS is required for Leiden community detection.
+#
+# HOW TO USE:
+#   Start:   docker compose up -d
+#   Stop:    docker compose down
+#   Logs:    docker compose logs neo4j
+#   Browser: http://localhost:7474 (Neo4j Browser UI)
+#   Bolt:    bolt://localhost:7687 (connection from Python code)
+#
+# FIRST TIME:
+#   After starting, open http://localhost:7474 in your browser.
+#   Login with neo4j / changeme (the password set below).
+#   Neo4j may ask you to change the password — keep it as "changeme"
+#   or update your .env file to match.
+#
+# DATA PERSISTENCE:
+#   Data is stored in a Docker volume (neo4j_data). This means:
+#   - Your graph survives container restarts
+#   - `docker compose down` keeps the data
+#   - `docker compose down -v` DELETES the data (use to start fresh)
+#
+# =============================================================================
+
+services:
+  neo4j:
+    image: neo4j:5-community
+    container_name: jiang-graphrag-neo4j
+    ports:
+      # Neo4j Browser (web UI for visualizing the graph and running Cypher)
+      - "7474:7474"
+      # Bolt protocol (how our Python code connects to Neo4j)
+      - "7687:7687"
+    environment:
+      # Initial password (change in .env if you want something different)
+      - NEO4J_AUTH=neo4j/changeme
+      # Enable GDS plugin (required for Leiden community detection)
+      - NEO4J_PLUGINS=["graph-data-science"]
+      # Memory settings (adjust based on your machine)
+      # For our graph size (~30K nodes, ~250K relationships), these are generous
+      - NEO4J_server_memory_heap_initial__size=512m
+      - NEO4J_server_memory_heap_max__size=1G
+      - NEO4J_server_memory_pagecache_size=512m
+    volumes:
+      # Persist graph data between container restarts
+      - neo4j_data:/data
+      # Persist logs
+      - neo4j_logs:/logs
+
+volumes:
+  neo4j_data:
+  neo4j_logs:
