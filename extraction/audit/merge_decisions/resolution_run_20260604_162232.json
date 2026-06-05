@@ -1,0 +1,47 @@
+[
+  {
+    "entity_a": "Mythology",
+    "entity_b": "mythology",
+    "should_merge": true,
+    "canonical_name": "mythology",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'mythology'"
+  },
+  {
+    "entity_a": "civilization",
+    "entity_b": "Civilization",
+    "should_merge": true,
+    "canonical_name": "Civilization",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'civilization'"
+  },
+  {
+    "entity_a": "pyramids",
+    "entity_b": "Pyramids",
+    "should_merge": true,
+    "canonical_name": "Pyramids",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'pyramids'"
+  },
+  {
+    "entity_a": "Sumeria",
+    "entity_b": "Sumerians",
+    "should_merge": true,
+    "canonical_name": "Sumerians",
+    "method": "fuzzy",
+    "score": 0.875,
+    "reasoning": "Fuzzy token_sort_ratio: 87.5%"
+  },
+  {
+    "entity_a": "5.9 kilo year event",
+    "entity_b": "8.2 kilo year event",
+    "should_merge": true,
+    "canonical_name": "8.2 kilo year event",
+    "method": "fuzzy",
+    "score": 0.8947368421052632,
+    "reasoning": "Fuzzy token_sort_ratio: 89.47368421052632%"
+  }
+]

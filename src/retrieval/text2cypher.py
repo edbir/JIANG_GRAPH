@@ -219,7 +219,7 @@ async def text_to_cypher(
                 question=question,
             )
 
-        response = await openai_client.chat.completions.create(
+        response = await openai_client.beta.chat.completions.parse(
             model=settings.model_cheap,  # gpt-4o-mini (fast, good at Cypher)
             temperature=0.0,
             messages=[

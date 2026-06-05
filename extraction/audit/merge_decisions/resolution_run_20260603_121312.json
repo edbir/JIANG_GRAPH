@@ -1,0 +1,83 @@
+[
+  {
+    "entity_a": "Philip II",
+    "entity_b": "Philip II of Macedon",
+    "should_merge": true,
+    "canonical_name": "Philip II of Macedon",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'philip ii'"
+  },
+  {
+    "entity_a": "Darius",
+    "entity_b": "Darius III",
+    "should_merge": true,
+    "canonical_name": "Darius III",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'darius'"
+  },
+  {
+    "entity_a": "Alexander's father",
+    "entity_b": "Philip II of Macedon",
+    "should_merge": true,
+    "canonical_name": "Philip II of Macedon",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'alexander's father'"
+  },
+  {
+    "entity_a": "Macedonian army",
+    "entity_b": "Macedonian Army",
+    "should_merge": true,
+    "canonical_name": "Macedonian Army",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'macedonian army'"
+  },
+  {
+    "entity_a": "Parmion",
+    "entity_b": "Parmenion",
+    "should_merge": true,
+    "canonical_name": "Parmenion",
+    "method": "fuzzy",
+    "score": 0.875,
+    "reasoning": "Fuzzy token_sort_ratio: 87.5%"
+  },
+  {
+    "entity_a": "Menon of Rhodes",
+    "entity_b": "Mennon of Rhodes",
+    "should_merge": true,
+    "canonical_name": "Mennon of Rhodes",
+    "method": "fuzzy",
+    "score": 0.967741935483871,
+    "reasoning": "Fuzzy token_sort_ratio: 96.7741935483871%"
+  },
+  {
+    "entity_a": "330 BCE",
+    "entity_b": "331 BCE",
+    "should_merge": true,
+    "canonical_name": "331 BCE",
+    "method": "fuzzy",
+    "score": 0.8571428571428572,
+    "reasoning": "Fuzzy token_sort_ratio: 85.71428571428572%"
+  },
+  {
+    "entity_a": "323 BCE",
+    "entity_b": "331 BCE",
+    "should_merge": true,
+    "canonical_name": "331 BCE",
+    "method": "fuzzy",
+    "score": 0.8571428571428572,
+    "reasoning": "Fuzzy token_sort_ratio: 85.71428571428572%"
+  },
+  {
+    "entity_a": "323 BCE",
+    "entity_b": "330 BCE",
+    "should_merge": true,
+    "canonical_name": "330 BCE",
+    "method": "fuzzy",
+    "score": 0.8571428571428572,
+    "reasoning": "Fuzzy token_sort_ratio: 85.71428571428572%"
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "entity_a": "Indus Valley Civilization",
+    "entity_b": "IVC (Indus Valley Civilization)",
+    "should_merge": true,
+    "canonical_name": "IVC (Indus Valley Civilization)",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'indus valley civilization'"
+  },
+  {
+    "entity_a": "Dharma",
+    "entity_b": "dharma",
+    "should_merge": true,
+    "canonical_name": "dharma",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'dharma'"
+  },
+  {
+    "entity_a": "Karma",
+    "entity_b": "karma",
+    "should_merge": true,
+    "canonical_name": "karma",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'karma'"
+  },
+  {
+    "entity_a": "Brahma",
+    "entity_b": "Brahman",
+    "should_merge": true,
+    "canonical_name": "Brahman",
+    "method": "fuzzy",
+    "score": 0.923076923076923,
+    "reasoning": "Fuzzy token_sort_ratio: 92.3076923076923%"
+  },
+  {
+    "entity_a": "Mesopotamia",
+    "entity_b": "Mesopotamians",
+    "should_merge": true,
+    "canonical_name": "Mesopotamians",
+    "method": "fuzzy",
+    "score": 0.9166666666666665,
+    "reasoning": "Fuzzy token_sort_ratio: 91.66666666666666%"
+  },
+  {
+    "entity_a": "Australia",
+    "entity_b": "New Zealand",
+    "should_merge": true,
+    "canonical_name": "New Zealand",
+    "method": "embedding",
+    "score": 0.9739642870131436,
+    "reasoning": "Embedding cosine similarity: 0.974"
+  }
+]

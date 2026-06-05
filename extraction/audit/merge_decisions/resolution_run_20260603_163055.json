@@ -1,0 +1,29 @@
+[
+  {
+    "entity_a": "Cognitive dissonance",
+    "entity_b": "cognitive dissonance",
+    "should_merge": true,
+    "canonical_name": "cognitive dissonance",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'cognitive dissonance'"
+  },
+  {
+    "entity_a": "Cassius",
+    "entity_b": "Crassus",
+    "should_merge": true,
+    "canonical_name": "Crassus",
+    "method": "fuzzy",
+    "score": 0.8571428571428572,
+    "reasoning": "Fuzzy token_sort_ratio: 85.71428571428572%"
+  },
+  {
+    "entity_a": "50 silver talents",
+    "entity_b": "20 silver talents",
+    "should_merge": true,
+    "canonical_name": "20 silver talents",
+    "method": "fuzzy",
+    "score": 0.9411764705882352,
+    "reasoning": "Fuzzy token_sort_ratio: 94.11764705882352%"
+  }
+]

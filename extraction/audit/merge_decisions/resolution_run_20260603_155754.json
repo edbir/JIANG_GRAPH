@@ -1,0 +1,56 @@
+[
+  {
+    "entity_a": "Etruscans",
+    "entity_b": "Trischians",
+    "should_merge": true,
+    "canonical_name": "Trischians",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'etruscans'"
+  },
+  {
+    "entity_a": "Carthage",
+    "entity_b": "Carthaginians",
+    "should_merge": true,
+    "canonical_name": "Carthaginians",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'carthage'"
+  },
+  {
+    "entity_a": "Mediterranean",
+    "entity_b": "Mediterranean Sea",
+    "should_merge": true,
+    "canonical_name": "Mediterranean Sea",
+    "method": "fuzzy",
+    "score": 0.8666666666666667,
+    "reasoning": "Fuzzy token_sort_ratio: 86.66666666666667%"
+  },
+  {
+    "entity_a": "70,000 men",
+    "entity_b": "80,000 men",
+    "should_merge": true,
+    "canonical_name": "80,000 men",
+    "method": "fuzzy",
+    "score": 0.9,
+    "reasoning": "Fuzzy token_sort_ratio: 90.0%"
+  },
+  {
+    "entity_a": "Roman identity",
+    "entity_b": "Roman indemnity",
+    "should_merge": true,
+    "canonical_name": "Roman indemnity",
+    "method": "fuzzy",
+    "score": 0.896551724137931,
+    "reasoning": "Fuzzy token_sort_ratio: 89.65517241379311%"
+  },
+  {
+    "entity_a": "Battle of Canaan",
+    "entity_b": "Battle of Cannae",
+    "should_merge": true,
+    "canonical_name": "Battle of Cannae",
+    "method": "fuzzy",
+    "score": 0.875,
+    "reasoning": "Fuzzy token_sort_ratio: 87.5%"
+  }
+]

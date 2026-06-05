@@ -1,0 +1,20 @@
+[
+  {
+    "entity_a": "democracy",
+    "entity_b": "Democracy",
+    "should_merge": true,
+    "canonical_name": "Democracy",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'democracy'"
+  },
+  {
+    "entity_a": "The Clouds",
+    "entity_b": "The Clouds (play)",
+    "should_merge": true,
+    "canonical_name": "The Clouds (play)",
+    "method": "embedding",
+    "score": 0.9739043640253942,
+    "reasoning": "Embedding cosine similarity: 0.974"
+  }
+]

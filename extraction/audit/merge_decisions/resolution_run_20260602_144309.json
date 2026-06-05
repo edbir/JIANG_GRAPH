@@ -1,0 +1,11 @@
+[
+  {
+    "entity_a": "Greek civilization",
+    "entity_b": "Greek Civilization",
+    "should_merge": true,
+    "canonical_name": "Greek Civilization",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'greek civilization'"
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "entity_a": "justice",
+    "entity_b": "Justice",
+    "should_merge": true,
+    "canonical_name": "Justice",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'justice'"
+  },
+  {
+    "entity_a": "Oedipus Trilogy",
+    "entity_b": "Oedipus trilogy",
+    "should_merge": true,
+    "canonical_name": "Oedipus trilogy",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'oedipus trilogy'"
+  },
+  {
+    "entity_a": "Athens' democracy",
+    "entity_b": "Athenian democracy",
+    "should_merge": true,
+    "canonical_name": "Athenian democracy",
+    "method": "fuzzy",
+    "score": 0.8571428571428572,
+    "reasoning": "Fuzzy token_sort_ratio: 85.71428571428572%"
+  },
+  {
+    "entity_a": "Orestia",
+    "entity_b": "Oresteia",
+    "should_merge": true,
+    "canonical_name": "Oresteia",
+    "method": "fuzzy",
+    "score": 0.9333333333333332,
+    "reasoning": "Fuzzy token_sort_ratio: 93.33333333333333%"
+  },
+  {
+    "entity_a": "state funeral",
+    "entity_b": "The state funeral",
+    "should_merge": true,
+    "canonical_name": "The state funeral",
+    "method": "fuzzy",
+    "score": 0.8666666666666667,
+    "reasoning": "Fuzzy token_sort_ratio: 86.66666666666667%"
+  }
+]

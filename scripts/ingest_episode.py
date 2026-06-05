@@ -289,6 +289,22 @@ async def ingest_episode(
     # --- Step 5: Entity resolution ---
     candidates = collect_entity_candidates(extraction_results)
     merge_map, decisions = await resolve_entities(candidates, client=openai_client)
+    # Lets print the merge map and decisions in a pretty and readable way in the terminal for debugging and transparency
+    print("Merge Map:")
+    for src, dst in merge_map.items():
+        print(f"  {src} -> {dst}")
+    print("Decisions:")
+    for decision in decisions:
+        print(f"  {decision.entity_a} vs {decision.entity_b}")
+        print(f"    Should merge: {decision.should_merge}")
+        print(f"    Canonical name: {decision.canonical_name}")
+        print(f"    Method: {decision.method}")
+        print(f"    Score: {decision.score}")
+        print(f"    Reasoning: {decision.reasoning}")
+
+    
+  
+
     stats["entities_merged"] = sum(1 for d in decisions if d.should_merge)
     stats["unique_entities"] = len(candidates) - stats["entities_merged"]
     print(f"[ingest] Resolved: {stats['entities_merged']} merges, {stats['unique_entities']} unique entities")

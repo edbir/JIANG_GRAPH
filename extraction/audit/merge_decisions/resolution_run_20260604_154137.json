@@ -1,0 +1,38 @@
+[
+  {
+    "entity_a": "Octavian",
+    "entity_b": "Augustus Caesar",
+    "should_merge": true,
+    "canonical_name": "Augustus Caesar",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'octavian'"
+  },
+  {
+    "entity_a": "Octavian",
+    "entity_b": "Augustus Caesar",
+    "should_merge": true,
+    "canonical_name": "Augustus Caesar",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'octavian'"
+  },
+  {
+    "entity_a": "Greek",
+    "entity_b": "Greeks",
+    "should_merge": true,
+    "canonical_name": "Greeks",
+    "method": "fuzzy",
+    "score": 0.9090909090909091,
+    "reasoning": "Fuzzy token_sort_ratio: 90.9090909090909%"
+  },
+  {
+    "entity_a": "Odyssey",
+    "entity_b": "the Odyssey",
+    "should_merge": true,
+    "canonical_name": "the Odyssey",
+    "method": "embedding",
+    "score": 0.9400560435865961,
+    "reasoning": "Embedding cosine similarity: 0.940"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "entity_a": "Ra",
+    "entity_b": "Atum",
+    "should_merge": true,
+    "canonical_name": "Atum",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'ra'"
+  },
+  {
+    "entity_a": "pharaoh",
+    "entity_b": "Pharaoh",
+    "should_merge": true,
+    "canonical_name": "Pharaoh",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'pharaoh'"
+  }
+]

@@ -84,7 +84,7 @@ class Settings(BaseSettings):
     )
 
     model_strong: str = Field(
-        default="gpt-4o",
+        default="gpt-5-mini",
         description="Capable model for nuanced tasks (claims, coreference resolution)."
     )
 
@@ -151,7 +151,7 @@ class Settings(BaseSettings):
     )
 
     coreference_window_chunks: int = Field(
-        default=4,
+        default=2,
         description="How many chunks to include in the sliding window for coreference resolution."
     )
 
@@ -166,7 +166,7 @@ class Settings(BaseSettings):
     )
 
     embedding_similarity_threshold: float = Field(
-        default=0.85,
+        default=0.90,
         description="Cosine similarity threshold for embedding-based entity matching."
     )
 

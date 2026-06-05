@@ -37,7 +37,7 @@ ARCHITECTURE NOTE:
 """
 
 from dataclasses import dataclass
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 import re
 
 
@@ -119,6 +119,8 @@ class TopicBoundary(BaseModel):
         "E.g., 'The military campaigns of Alexander in Persia'."
     )
 
+    model_config = ConfigDict(extra="forbid")
+
 
 class SegmentationResult(BaseModel):
     """
@@ -132,6 +134,8 @@ class SegmentationResult(BaseModel):
         "Each boundary marks where a new topic begins. "
         "If no topic change is found, return an empty list."
     )
+
+    model_config = ConfigDict(extra="forbid")
 
 
 # =============================================================================
@@ -472,7 +476,7 @@ async def segment_with_llm(
 
         # 2b. Call the LLM with structured output
         # The response_format ensures the LLM returns valid SegmentationResult JSON
-        response = await llm_client.chat.completions.create(
+        response = await llm_client.beta.chat.completions.parse(
             model=model,
             temperature=0.0,
             messages=[

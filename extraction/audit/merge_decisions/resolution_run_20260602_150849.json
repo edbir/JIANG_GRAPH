@@ -1,0 +1,92 @@
+[
+  {
+    "entity_a": "Helots",
+    "entity_b": "helots",
+    "should_merge": true,
+    "canonical_name": "helots",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'helots'"
+  },
+  {
+    "entity_a": "Iran",
+    "entity_b": "Persia",
+    "should_merge": true,
+    "canonical_name": "Persia",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'iran'"
+  },
+  {
+    "entity_a": "Persian Navy",
+    "entity_b": "Persian navy",
+    "should_merge": true,
+    "canonical_name": "Persian navy",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'persian navy'"
+  },
+  {
+    "entity_a": "Delian League",
+    "entity_b": "Dalian League",
+    "should_merge": true,
+    "canonical_name": "Dalian League",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'delian league'"
+  },
+  {
+    "entity_a": "polis",
+    "entity_b": "Polis",
+    "should_merge": true,
+    "canonical_name": "Polis",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'polis'"
+  },
+  {
+    "entity_a": "James B. Calhoun",
+    "entity_b": "James B. Iqalhoun",
+    "should_merge": true,
+    "canonical_name": "James B. Iqalhoun",
+    "method": "fuzzy",
+    "score": 0.9090909090909091,
+    "reasoning": "Fuzzy token_sort_ratio: 90.9090909090909%"
+  },
+  {
+    "entity_a": "Mediterranean",
+    "entity_b": "Mediterranean Sea",
+    "should_merge": true,
+    "canonical_name": "Mediterranean Sea",
+    "method": "fuzzy",
+    "score": 0.8666666666666667,
+    "reasoning": "Fuzzy token_sort_ratio: 86.66666666666667%"
+  },
+  {
+    "entity_a": "Athenian expeditions",
+    "entity_b": "Athens' expansionist campaign",
+    "should_merge": true,
+    "canonical_name": "Athens' expansionist campaign",
+    "method": "embedding",
+    "score": 0.8632023695667621,
+    "reasoning": "Embedding cosine similarity: 0.863"
+  },
+  {
+    "entity_a": "Spartan society",
+    "entity_b": "Spartan military society",
+    "should_merge": true,
+    "canonical_name": "Spartan military society",
+    "method": "embedding",
+    "score": 0.9492284539374437,
+    "reasoning": "Embedding cosine similarity: 0.949"
+  },
+  {
+    "entity_a": "upper nobility",
+    "entity_b": "lower nobility",
+    "should_merge": true,
+    "canonical_name": "lower nobility",
+    "method": "embedding",
+    "score": 0.883820857210327,
+    "reasoning": "Embedding cosine similarity: 0.884"
+  }
+]

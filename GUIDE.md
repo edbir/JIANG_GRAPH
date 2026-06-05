@@ -205,7 +205,6 @@ python -m src.mcp.server
 ## Fluxo de Dados Detalhado (para quem quer entender a fundo)
 
 ### Fase 0: Download e Transcrição
-
 ```
 Input: YouTube URL (e.g., "https://www.youtube.com/watch?v=VIDEO_ID")
 

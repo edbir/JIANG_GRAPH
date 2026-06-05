@@ -12,7 +12,7 @@ Pass 5: Entity Resolution — LLM judgment stage (GPT-4o-mini)
 """
 
 from enum import Enum
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 # =============================================================================
@@ -68,6 +68,8 @@ class Stance(str, Enum):
 class Entity(BaseModel):
     """A single entity extracted from a transcript chunk."""
 
+    model_config = ConfigDict(extra="forbid")
+
     name: str = Field(
         description="Canonical, universally recognized name. "
         "E.g., 'Alexander the Great', 'Roman Empire', 'Battle of Thermopylae'."
@@ -112,6 +114,7 @@ class EntityExtractionResult(BaseModel):
     entities: list[Entity] = Field(
         description="List of entities extracted from the transcript chunk."
     )
+    model_config = ConfigDict(extra="forbid")
 
 
 # =============================================================================
@@ -121,6 +124,8 @@ class EntityExtractionResult(BaseModel):
 
 class Relationship(BaseModel):
     """A directed relationship between two entities."""
+
+    model_config = ConfigDict(extra="forbid")
 
     source_entity: str = Field(
         description="Name of the source entity (must match a name from Pass 1)."
@@ -146,7 +151,7 @@ class RelationshipExtractionResult(BaseModel):
     relationships: list[Relationship] = Field(
         description="List of relationships between entities in this chunk."
     )
-
+    model_config = ConfigDict(extra="forbid")
 
 # =============================================================================
 # Pass 3 — Claim/Opinion Extraction
@@ -194,12 +199,15 @@ class Claim(BaseModel):
         "What is expected to happen. E.g., 'The US will experience a civil conflict'."
     )
 
+    model_config = ConfigDict(extra="forbid")
+
 
 class ClaimExtractionResult(BaseModel):
     """Output of Pass 3: all claims found in a single chunk."""
     claims: list[Claim] = Field(
         description="List of claims, opinions, and predictions extracted from the chunk."
     )
+    model_config = ConfigDict(extra="forbid")
 
 
 # =============================================================================
@@ -222,12 +230,16 @@ class CoreferenceEntry(BaseModel):
         description="Index of the chunk (within the sliding window) where this reference appears."
     )
 
+    model_config = ConfigDict(extra="forbid")
+
 
 class CoreferenceResult(BaseModel):
     """Output of Pass 4: all coreferences resolved in a sliding window of chunks."""
     coreferences: list[CoreferenceEntry] = Field(
         description="List of resolved coreferences across the chunk window."
     )
+
+    model_config = ConfigDict(extra="forbid")
 
 
 # =============================================================================
@@ -259,9 +271,13 @@ class EntityResolutionJudgment(BaseModel):
         description="Brief justification for the decision. Enables human audit."
     )
 
+    model_config = ConfigDict(extra="forbid")
+
 
 class EntityResolutionBatch(BaseModel):
     """Output of Pass 5: resolution decisions for a batch of ambiguous entity pairs."""
     judgments: list[EntityResolutionJudgment] = Field(
         description="List of merge/no-merge decisions for entity pairs."
     )
+
+    model_config = ConfigDict(extra="forbid")

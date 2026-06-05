@@ -35,7 +35,7 @@ RULES:
 6. For EVENT: classify event_type as one of: war, battle, treaty, revolution, crisis, plague, period.
 7. Write descriptions based ONLY on what is stated or clearly implied in the chunk. Do not add external knowledge.
 8. If an entity is ambiguous or unclear, still extract it with your best interpretation and note the ambiguity in the description.
-9. Extract ALL entities mentioned, even if briefly. Completeness is important."""
+9. Bounded Extraction: Extract a maximum of the 30 most significant entities from this chunk. Prioritize entities that are central to the professor's core historical or geopolitical argument. Do not exhaustively extract minor background entities or passing metaphorical mentions if doing so exceeds this limit."""
 
 
 ENTITY_EXTRACTION_USER = """EPISODE CONTEXT:

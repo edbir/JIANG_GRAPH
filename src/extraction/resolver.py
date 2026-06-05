@@ -31,6 +31,10 @@ WHAT IT PRODUCES:
 import unicodedata
 import re
 from dataclasses import dataclass
+import json
+import os
+from datetime import datetime
+from dataclasses import asdict
 
 from src.config import settings
 
@@ -298,7 +302,7 @@ async def find_embedding_matches(
     1. For each unresolved candidate, create text: "name: description"
     2. Generate embeddings for all texts in one batch call
     3. Compare all pairs by cosine similarity
-    4. Pairs above threshold (default 0.85) are marked as duplicates
+    4. Pairs above threshold (default 0.90) are marked as duplicates
     
     WHY "name + description" (not just name):
         - "USA" and "United States" have different name embeddings
@@ -310,7 +314,7 @@ async def find_embedding_matches(
         client:         OpenAI AsyncClient
         candidates:     All entity candidates
         already_merged: Set of names already resolved in Stages 1-2
-        threshold:      Cosine similarity threshold (default from config: 0.85)
+        threshold:      Cosine similarity threshold (default from config: 0.90)
     
     Returns:
         List of MergeDecision objects for embedding matches
@@ -448,6 +452,29 @@ def build_merge_map(decisions: list[MergeDecision]) -> dict[str, str]:
     return merge_map
 
 
+def save_merge_decisions_to_disk(decisions: list[MergeDecision], folder_name: str = "extraction/audit/merge_decisions"):
+    """
+    Saves a list of MergeDecision objects to a JSON file for later review.
+    Creates a new file with a timestamp so historical runs aren't overwritten.
+    """
+    if not decisions:
+        return
+
+    # 1. Ensure the target folder exists
+    os.makedirs(folder_name, exist_ok=True)
+
+    # 2. Create a unique filename based on the current time
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filepath = os.path.join(folder_name, f"resolution_run_{timestamp}.json")
+
+    # 3. Convert dataclasses to standard dictionaries and save as JSON
+    dict_decisions = [asdict(decision) for decision in decisions]
+    
+    with open(filepath, "w", encoding="utf-8") as f:
+        json.dump(dict_decisions, f, indent=2, ensure_ascii=False)
+        
+    print(f"✅ Saved {len(decisions)} merge decisions to {filepath}")
+
 # =============================================================================
 # MAIN ENTRY POINT
 # =============================================================================
@@ -506,5 +533,7 @@ async def resolve_entities(
 
     # --- Build final merge map ---
     merge_map = build_merge_map(all_decisions)
+
+    save_merge_decisions_to_disk(all_decisions)
 
     return merge_map, all_decisions

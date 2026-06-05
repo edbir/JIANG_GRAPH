@@ -26,7 +26,7 @@ REFERENCE:
     vs. their learned complexity predictor) but follows the same principle.
 """
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from enum import Enum
 
 from src.config import settings
@@ -65,6 +65,8 @@ class QueryClassification(BaseModel):
         default_factory=list,
         description="Topics or themes the query is about."
     )
+
+    model_config = ConfigDict(extra="forbid")
 
 
 # =============================================================================
@@ -124,7 +126,7 @@ async def classify_query(
 
     user_prompt = CLASSIFIER_USER.format(query=query)
 
-    response = await client.chat.completions.create(
+    response = await client.beta.chat.completions.parse(
         model=settings.model_cheap,  # gpt-4o-mini (fast, cheap)
         temperature=0.0,
         messages=[

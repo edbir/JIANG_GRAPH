@@ -1,0 +1,65 @@
+[
+  {
+    "entity_a": "Mark Antony",
+    "entity_b": "Mark Anthony",
+    "should_merge": true,
+    "canonical_name": "Mark Anthony",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'mark antony'"
+  },
+  {
+    "entity_a": "Mark Antony",
+    "entity_b": "Mark Anthony",
+    "should_merge": true,
+    "canonical_name": "Mark Anthony",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'mark antony'"
+  },
+  {
+    "entity_a": "Mark Antony",
+    "entity_b": "Mark Anthony",
+    "should_merge": true,
+    "canonical_name": "Mark Anthony",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'mark antony'"
+  },
+  {
+    "entity_a": "Octavian",
+    "entity_b": "Augustus Caesar",
+    "should_merge": true,
+    "canonical_name": "Augustus Caesar",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'octavian'"
+  },
+  {
+    "entity_a": "Decimus Brutus",
+    "entity_b": "Desimus Brutus",
+    "should_merge": true,
+    "canonical_name": "Desimus Brutus",
+    "method": "fuzzy",
+    "score": 0.9285714285714286,
+    "reasoning": "Fuzzy token_sort_ratio: 92.85714285714286%"
+  },
+  {
+    "entity_a": "George W. Bush",
+    "entity_b": "George H. W. Bush",
+    "should_merge": true,
+    "canonical_name": "George H. W. Bush",
+    "method": "fuzzy",
+    "score": 0.9032258064516128,
+    "reasoning": "Fuzzy token_sort_ratio: 90.32258064516128%"
+  },
+  {
+    "entity_a": "Parthia",
+    "entity_b": "Parthians",
+    "should_merge": true,
+    "canonical_name": "Parthians",
+    "method": "fuzzy",
+    "score": 0.875,
+    "reasoning": "Fuzzy token_sort_ratio: 87.5%"
+  }
+]

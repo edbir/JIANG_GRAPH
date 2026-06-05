@@ -1,0 +1,11 @@
+[
+  {
+    "entity_a": "Military Conquest",
+    "entity_b": "military conquest",
+    "should_merge": true,
+    "canonical_name": "military conquest",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'military conquest'"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "entity_a": "David",
+    "entity_b": "King David of Israel",
+    "should_merge": true,
+    "canonical_name": "King David of Israel",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'david'"
+  },
+  {
+    "entity_a": "Iniat",
+    "entity_b": "Aeneid",
+    "should_merge": true,
+    "canonical_name": "Aeneid",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'iniat'"
+  },
+  {
+    "entity_a": "Jewish people",
+    "entity_b": "the Jewish people",
+    "should_merge": true,
+    "canonical_name": "the Jewish people",
+    "method": "fuzzy",
+    "score": 0.8666666666666667,
+    "reasoning": "Fuzzy token_sort_ratio: 86.66666666666667%"
+  },
+  {
+    "entity_a": "E school",
+    "entity_b": "J school",
+    "should_merge": true,
+    "canonical_name": "J school",
+    "method": "fuzzy",
+    "score": 0.875,
+    "reasoning": "Fuzzy token_sort_ratio: 87.5%"
+  },
+  {
+    "entity_a": "P school",
+    "entity_b": "J school",
+    "should_merge": true,
+    "canonical_name": "J school",
+    "method": "fuzzy",
+    "score": 0.875,
+    "reasoning": "Fuzzy token_sort_ratio: 87.5%"
+  },
+  {
+    "entity_a": "D school",
+    "entity_b": "J school",
+    "should_merge": true,
+    "canonical_name": "J school",
+    "method": "fuzzy",
+    "score": 0.875,
+    "reasoning": "Fuzzy token_sort_ratio: 87.5%"
+  },
+  {
+    "entity_a": "P school",
+    "entity_b": "E school",
+    "should_merge": true,
+    "canonical_name": "E school",
+    "method": "fuzzy",
+    "score": 0.875,
+    "reasoning": "Fuzzy token_sort_ratio: 87.5%"
+  },
+  {
+    "entity_a": "D school",
+    "entity_b": "E school",
+    "should_merge": true,
+    "canonical_name": "E school",
+    "method": "fuzzy",
+    "score": 0.875,
+    "reasoning": "Fuzzy token_sort_ratio: 87.5%"
+  },
+  {
+    "entity_a": "D school",
+    "entity_b": "P school",
+    "should_merge": true,
+    "canonical_name": "P school",
+    "method": "fuzzy",
+    "score": 0.875,
+    "reasoning": "Fuzzy token_sort_ratio: 87.5%"
+  },
+  {
+    "entity_a": "house of David",
+    "entity_b": "the house of David",
+    "should_merge": true,
+    "canonical_name": "the house of David",
+    "method": "fuzzy",
+    "score": 0.875,
+    "reasoning": "Fuzzy token_sort_ratio: 87.5%"
+  }
+]

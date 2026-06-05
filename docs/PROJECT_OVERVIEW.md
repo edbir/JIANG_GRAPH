@@ -2,11 +2,8 @@
 
 ## O que é este projeto
 
-Um sistema GraphRAG custom que transforma ~134 episódios de aulas de história do YouTube (canal "Predictive History", Prof. Jiang) em um knowledge graph queryable no Neo4j, exposto via MCP server para LLMs.
+Um sistema GraphRAG custom que transforma ~60 episódios de aulas de história do YouTube (canal "Predictive History", Prof. Jiang) em um knowledge graph queryable no Neo4j, exposto via MCP server para LLMs.
 
-## Para quem é
-
-Este é o TCC (Trabalho de Conclusão de Curso) de Eduardo Birkheuer em Ciência da Computação na UFRGS.
 
 ## O domínio
 

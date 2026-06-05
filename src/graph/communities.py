@@ -322,7 +322,7 @@ async def summarize_community(
     )
 
     # Call LLM for summary
-    response = await llm_client.chat.completions.create(
+    response = await llm_client.beta.chat.completions.parse(
         model=settings.model_cheap,  # gpt-4o-mini is sufficient for summarization
         temperature=0.0,
         messages=[

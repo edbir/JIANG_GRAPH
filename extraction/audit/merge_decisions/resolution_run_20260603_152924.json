@@ -1,0 +1,47 @@
+[
+  {
+    "entity_a": "Philip",
+    "entity_b": "Philip II of Macedon",
+    "should_merge": true,
+    "canonical_name": "Philip II of Macedon",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'philip'"
+  },
+  {
+    "entity_a": "Alexander",
+    "entity_b": "Alexander the Great",
+    "should_merge": true,
+    "canonical_name": "Alexander the Great",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'alexander'"
+  },
+  {
+    "entity_a": "Panhellenic project",
+    "entity_b": "Pan-Hellenic Project",
+    "should_merge": true,
+    "canonical_name": "Pan-Hellenic Project",
+    "method": "fuzzy",
+    "score": 0.8717948717948718,
+    "reasoning": "Fuzzy token_sort_ratio: 87.17948717948718%"
+  },
+  {
+    "entity_a": "Panhellenic project",
+    "entity_b": "Panhellenistic project",
+    "should_merge": true,
+    "canonical_name": "Panhellenistic project",
+    "method": "fuzzy",
+    "score": 0.926829268292683,
+    "reasoning": "Fuzzy token_sort_ratio: 92.6829268292683%"
+  },
+  {
+    "entity_a": "Panhellenistic project",
+    "entity_b": "pan-Hellenistic project",
+    "should_merge": true,
+    "canonical_name": "pan-Hellenistic project",
+    "method": "fuzzy",
+    "score": 0.8888888888888888,
+    "reasoning": "Fuzzy token_sort_ratio: 88.88888888888889%"
+  }
+]

@@ -103,6 +103,7 @@ def _get_cached(cache_key: str) -> dict | None:
     Returns the parsed JSON response, or None if not cached.
     """
     cache_file = CACHE_DIR / f"{cache_key}.json"
+    print("Checking cache for key:", cache_key)
     if cache_file.exists():
         return json.loads(cache_file.read_text())
     return None
@@ -112,7 +113,10 @@ def _save_cache(cache_key: str, response: dict) -> None:
     """Save an LLM response to the cache."""
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
     cache_file = CACHE_DIR / f"{cache_key}.json"
-    cache_file.write_text(json.dumps(response, ensure_ascii=False, indent=2))
+    cache_file.write_text(
+        json.dumps(response, ensure_ascii=False, indent=2), 
+        encoding="utf-8"
+    )
 
 
 # =============================================================================
@@ -157,24 +161,18 @@ async def _call_llm(
     key = _cache_key(system_prompt, user_prompt, model)
     cached = _get_cached(key)
     if cached is not None:
+        print("This is cached. Returning cached response.")
         return cached
 
-    # Step 2: Call the API
-    response = await client.chat.completions.create(
+    # Step 2: Call the API 
+    response = await client.beta.chat.completions.parse(
         model=model,
-        temperature=0.0,
+        temperature=0.0 if model != settings.model_strong else 1,  # more deterministic for cheap model
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
         ],
-        response_format={
-            "type": "json_schema",
-            "json_schema": {
-                "name": schema_name,
-                "strict": True,
-                "schema": response_schema.model_json_schema(),
-            }
-        },
+        response_format=response_schema,
     )
 
     # Step 3: Parse the response
@@ -567,7 +565,7 @@ async def process_episode(
     # We slide a window of N chunks across the episode and resolve
     # pronouns/references in each window.
 
-    window_size = settings.coreference_window_chunks  # default: 4
+    window_size = settings.coreference_window_chunks  # default: 2
 
     for i in range(0, len(chunks), window_size - 1):
         # Take a window of chunks (overlapping by 1 for continuity)
