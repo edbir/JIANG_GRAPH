@@ -1,0 +1,65 @@
+[
+  {
+    "entity_a": "God",
+    "entity_b": "Yahweh",
+    "should_merge": true,
+    "canonical_name": "Yahweh",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'god'"
+  },
+  {
+    "entity_a": "David",
+    "entity_b": "King David",
+    "should_merge": true,
+    "canonical_name": "King David",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'david'"
+  },
+  {
+    "entity_a": "Yahweh",
+    "entity_b": "Yahwehs",
+    "should_merge": true,
+    "canonical_name": "Yahwehs",
+    "method": "fuzzy",
+    "score": 0.923076923076923,
+    "reasoning": "Fuzzy token_sort_ratio: 92.3076923076923%"
+  },
+  {
+    "entity_a": "Moabite",
+    "entity_b": "Moabites",
+    "should_merge": true,
+    "canonical_name": "Moabites",
+    "method": "fuzzy",
+    "score": 0.9333333333333332,
+    "reasoning": "Fuzzy token_sort_ratio: 93.33333333333333%"
+  },
+  {
+    "entity_a": "Garden of Edom",
+    "entity_b": "Garden of Eden",
+    "should_merge": true,
+    "canonical_name": "Garden of Eden",
+    "method": "fuzzy",
+    "score": 0.8571428571428572,
+    "reasoning": "Fuzzy token_sort_ratio: 85.71428571428572%"
+  },
+  {
+    "entity_a": "knowledge of good and evil",
+    "entity_b": "tree of knowledge of good and evil",
+    "should_merge": true,
+    "canonical_name": "tree of knowledge of good and evil",
+    "method": "fuzzy",
+    "score": 0.8666666666666667,
+    "reasoning": "Fuzzy token_sort_ratio: 86.66666666666667%"
+  },
+  {
+    "entity_a": "Nile",
+    "entity_b": "Euphrates",
+    "should_merge": true,
+    "canonical_name": "Euphrates",
+    "method": "embedding",
+    "score": 0.9138574896700491,
+    "reasoning": "Embedding cosine similarity: 0.914"
+  }
+]

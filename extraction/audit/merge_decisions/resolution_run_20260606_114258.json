@@ -1,0 +1,47 @@
+[
+  {
+    "entity_a": "Byzantium",
+    "entity_b": "Byzantine Empire",
+    "should_merge": true,
+    "canonical_name": "Byzantine Empire",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'byzantium'"
+  },
+  {
+    "entity_a": "Istanbul",
+    "entity_b": "Constantinople",
+    "should_merge": true,
+    "canonical_name": "Constantinople",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'istanbul'"
+  },
+  {
+    "entity_a": "Constantine",
+    "entity_b": "Constantine the Great",
+    "should_merge": true,
+    "canonical_name": "Constantine the Great",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'constantine'"
+  },
+  {
+    "entity_a": "Constantine",
+    "entity_b": "Constantine the Great",
+    "should_merge": true,
+    "canonical_name": "Constantine the Great",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'constantine'"
+  },
+  {
+    "entity_a": "bureaucracy",
+    "entity_b": "Bureaucracy",
+    "should_merge": true,
+    "canonical_name": "Bureaucracy",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'bureaucracy'"
+  }
+]

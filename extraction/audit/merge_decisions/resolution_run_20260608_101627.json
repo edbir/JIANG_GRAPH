@@ -1,0 +1,47 @@
+[
+  {
+    "entity_a": "enlightenment",
+    "entity_b": "Enlightenment",
+    "should_merge": true,
+    "canonical_name": "Enlightenment",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'enlightenment'"
+  },
+  {
+    "entity_a": "Stalin",
+    "entity_b": "Joseph Stalin",
+    "should_merge": true,
+    "canonical_name": "Joseph Stalin",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'stalin'"
+  },
+  {
+    "entity_a": "Rousseau",
+    "entity_b": "Jean-Jacques Rousseau",
+    "should_merge": true,
+    "canonical_name": "Jean-Jacques Rousseau",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'rousseau'"
+  },
+  {
+    "entity_a": "Napoleon",
+    "entity_b": "Napoleon Bonaparte",
+    "should_merge": true,
+    "canonical_name": "Napoleon Bonaparte",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'napoleon'"
+  },
+  {
+    "entity_a": "Napoleon",
+    "entity_b": "Napoleon Bonaparte",
+    "should_merge": true,
+    "canonical_name": "Napoleon Bonaparte",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'napoleon'"
+  }
+]

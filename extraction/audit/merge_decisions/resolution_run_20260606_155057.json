@@ -1,0 +1,20 @@
+[
+  {
+    "entity_a": "Dominicans",
+    "entity_b": "Dominican Order",
+    "should_merge": true,
+    "canonical_name": "Dominican Order",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'dominicans'"
+  },
+  {
+    "entity_a": "soul",
+    "entity_b": "souls",
+    "should_merge": true,
+    "canonical_name": "souls",
+    "method": "fuzzy",
+    "score": 0.8888888888888888,
+    "reasoning": "Fuzzy token_sort_ratio: 88.88888888888889%"
+  }
+]

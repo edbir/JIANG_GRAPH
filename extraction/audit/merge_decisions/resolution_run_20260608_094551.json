@@ -1,0 +1,74 @@
+[
+  {
+    "entity_a": "Freud",
+    "entity_b": "Sigmund Freud",
+    "should_merge": true,
+    "canonical_name": "Sigmund Freud",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'freud'"
+  },
+  {
+    "entity_a": "Jung",
+    "entity_b": "Carl Jung",
+    "should_merge": true,
+    "canonical_name": "Carl Jung",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'jung'"
+  },
+  {
+    "entity_a": "Ignaz Semmelweis",
+    "entity_b": "Ignatius Simmelweis",
+    "should_merge": true,
+    "canonical_name": "Ignatius Simmelweis",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'ignaz semmelweis'"
+  },
+  {
+    "entity_a": "ego",
+    "entity_b": "Ego",
+    "should_merge": true,
+    "canonical_name": "Ego",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'ego'"
+  },
+  {
+    "entity_a": "Collective Unconscious",
+    "entity_b": "collective unconscious",
+    "should_merge": true,
+    "canonical_name": "collective unconscious",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'collective unconscious'"
+  },
+  {
+    "entity_a": "modernism",
+    "entity_b": "Modernism",
+    "should_merge": true,
+    "canonical_name": "Modernism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'modernism'"
+  },
+  {
+    "entity_a": "shadow",
+    "entity_b": "Shadow",
+    "should_merge": true,
+    "canonical_name": "Shadow",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'shadow'"
+  },
+  {
+    "entity_a": "19th Century",
+    "entity_b": "19th century",
+    "should_merge": true,
+    "canonical_name": "19th century",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: '19th century'"
+  }
+]

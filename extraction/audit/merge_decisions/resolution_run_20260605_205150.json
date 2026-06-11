@@ -1,0 +1,38 @@
+[
+  {
+    "entity_a": "Augustine",
+    "entity_b": "Augustine of Hippo",
+    "should_merge": true,
+    "canonical_name": "Augustine of Hippo",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'augustine'"
+  },
+  {
+    "entity_a": "Augustine",
+    "entity_b": "Augustine of Hippo",
+    "should_merge": true,
+    "canonical_name": "Augustine of Hippo",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'augustine'"
+  },
+  {
+    "entity_a": "Augustine",
+    "entity_b": "Augustine of Hippo",
+    "should_merge": true,
+    "canonical_name": "Augustine of Hippo",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'augustine'"
+  },
+  {
+    "entity_a": "city of God",
+    "entity_b": "City of God",
+    "should_merge": true,
+    "canonical_name": "City of God",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'city of god'"
+  }
+]

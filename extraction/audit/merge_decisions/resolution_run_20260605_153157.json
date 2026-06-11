@@ -1,0 +1,29 @@
+[
+  {
+    "entity_a": "Cyrus the Great",
+    "entity_b": "Sarasota the Great",
+    "should_merge": true,
+    "canonical_name": "Sarasota the Great",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'cyrus the great'"
+  },
+  {
+    "entity_a": "Corruption",
+    "entity_b": "corruption",
+    "should_merge": true,
+    "canonical_name": "corruption",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'corruption'"
+  },
+  {
+    "entity_a": "Mesopotamia",
+    "entity_b": "Mesopotamians",
+    "should_merge": true,
+    "canonical_name": "Mesopotamians",
+    "method": "fuzzy",
+    "score": 0.9166666666666665,
+    "reasoning": "Fuzzy token_sort_ratio: 91.66666666666666%"
+  }
+]

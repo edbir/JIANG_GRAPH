@@ -1,0 +1,191 @@
+[
+  {
+    "entity_a": "Austerlitz",
+    "entity_b": "Battle of Austerlitz",
+    "should_merge": true,
+    "canonical_name": "Battle of Austerlitz",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'austerlitz'"
+  },
+  {
+    "entity_a": "Coup d'etat",
+    "entity_b": "coup d'etat",
+    "should_merge": true,
+    "canonical_name": "coup d'etat",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'coup d'etat'"
+  },
+  {
+    "entity_a": "Napoleon",
+    "entity_b": "Napoleon Bonaparte",
+    "should_merge": true,
+    "canonical_name": "Napoleon Bonaparte",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'napoleon'"
+  },
+  {
+    "entity_a": "Napoleon",
+    "entity_b": "Napoleon Bonaparte",
+    "should_merge": true,
+    "canonical_name": "Napoleon Bonaparte",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'napoleon'"
+  },
+  {
+    "entity_a": "Robespierre",
+    "entity_b": "Maximilien Robespierre",
+    "should_merge": true,
+    "canonical_name": "Maximilien Robespierre",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'robespierre'"
+  },
+  {
+    "entity_a": "Robespierre",
+    "entity_b": "Maximilien Robespierre",
+    "should_merge": true,
+    "canonical_name": "Maximilien Robespierre",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'robespierre'"
+  },
+  {
+    "entity_a": "Deveaux",
+    "entity_b": "Jack Ma",
+    "should_merge": true,
+    "canonical_name": "Jack Ma",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'deveaux'"
+  },
+  {
+    "entity_a": "Austria",
+    "entity_b": "Austrian Empire",
+    "should_merge": true,
+    "canonical_name": "Austrian Empire",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'austria'"
+  },
+  {
+    "entity_a": "Russia",
+    "entity_b": "Russian Empire",
+    "should_merge": true,
+    "canonical_name": "Russian Empire",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'russia'"
+  },
+  {
+    "entity_a": "Prussian Army",
+    "entity_b": "Prussian army",
+    "should_merge": true,
+    "canonical_name": "Prussian army",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'prussian army'"
+  },
+  {
+    "entity_a": "French army",
+    "entity_b": "French Army",
+    "should_merge": true,
+    "canonical_name": "French Army",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'french army'"
+  },
+  {
+    "entity_a": "Prussia",
+    "entity_b": "Prussian Empire",
+    "should_merge": true,
+    "canonical_name": "Prussian Empire",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'prussia'"
+  },
+  {
+    "entity_a": "selflessness",
+    "entity_b": "battlefield awareness",
+    "should_merge": true,
+    "canonical_name": "battlefield awareness",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'selflessness'"
+  },
+  {
+    "entity_a": "battlefield",
+    "entity_b": "battlefield awareness",
+    "should_merge": true,
+    "canonical_name": "battlefield awareness",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'battlefield'"
+  },
+  {
+    "entity_a": "prioritization",
+    "entity_b": "battlefield awareness",
+    "should_merge": true,
+    "canonical_name": "battlefield awareness",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'prioritization'"
+  },
+  {
+    "entity_a": "flexibility",
+    "entity_b": "battlefield awareness",
+    "should_merge": true,
+    "canonical_name": "battlefield awareness",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'flexibility'"
+  },
+  {
+    "entity_a": "strategic imagination",
+    "entity_b": "battlefield awareness",
+    "should_merge": true,
+    "canonical_name": "battlefield awareness",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'strategic imagination'"
+  },
+  {
+    "entity_a": "flanking attack",
+    "entity_b": "battlefield awareness",
+    "should_merge": true,
+    "canonical_name": "battlefield awareness",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'flanking attack'"
+  },
+  {
+    "entity_a": "World War I",
+    "entity_b": "World War II",
+    "should_merge": true,
+    "canonical_name": "World War II",
+    "method": "fuzzy",
+    "score": 0.9565217391304348,
+    "reasoning": "Fuzzy token_sort_ratio: 95.65217391304348%"
+  },
+  {
+    "entity_a": "Russian Empire",
+    "entity_b": "Prussian Empire",
+    "should_merge": true,
+    "canonical_name": "Prussian Empire",
+    "method": "fuzzy",
+    "score": 0.896551724137931,
+    "reasoning": "Fuzzy token_sort_ratio: 89.65517241379311%"
+  },
+  {
+    "entity_a": "Persian Empire",
+    "entity_b": "Prussian Empire",
+    "should_merge": true,
+    "canonical_name": "Prussian Empire",
+    "method": "fuzzy",
+    "score": 0.896551724137931,
+    "reasoning": "Fuzzy token_sort_ratio: 89.65517241379311%"
+  }
+]

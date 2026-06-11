@@ -1,0 +1,38 @@
+[
+  {
+    "entity_a": "Dante",
+    "entity_b": "Dante Alighieri",
+    "should_merge": true,
+    "canonical_name": "Dante Alighieri",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'dante'"
+  },
+  {
+    "entity_a": "Dante",
+    "entity_b": "Dante Alighieri",
+    "should_merge": true,
+    "canonical_name": "Dante Alighieri",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'dante'"
+  },
+  {
+    "entity_a": "Augustine",
+    "entity_b": "Augustine of Hippo",
+    "should_merge": true,
+    "canonical_name": "Augustine of Hippo",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'augustine'"
+  },
+  {
+    "entity_a": "Divine Comedy",
+    "entity_b": "The Divine Comedy",
+    "should_merge": true,
+    "canonical_name": "The Divine Comedy",
+    "method": "fuzzy",
+    "score": 0.8666666666666667,
+    "reasoning": "Fuzzy token_sort_ratio: 86.66666666666667%"
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "entity_a": "Sargon of Akkad",
+    "entity_b": "Sargon of the Great",
+    "should_merge": true,
+    "canonical_name": "Sargon of the Great",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'sargon of akkad'"
+  },
+  {
+    "entity_a": "Sargon of Akkad",
+    "entity_b": "Sargon of the Great",
+    "should_merge": true,
+    "canonical_name": "Sargon of the Great",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'sargon of akkad'"
+  },
+  {
+    "entity_a": "Philip of Macedon",
+    "entity_b": "Philip II of Macedon",
+    "should_merge": true,
+    "canonical_name": "Philip II of Macedon",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'philip of macedon'"
+  },
+  {
+    "entity_a": "Yamnaya",
+    "entity_b": "Proto-Indo-Europeans",
+    "should_merge": true,
+    "canonical_name": "Proto-Indo-Europeans",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'yamnaya'"
+  },
+  {
+    "entity_a": "Mongol conquests",
+    "entity_b": "Mongolian conquest",
+    "should_merge": true,
+    "canonical_name": "Mongolian conquest",
+    "method": "fuzzy",
+    "score": 0.8823529411764706,
+    "reasoning": "Fuzzy token_sort_ratio: 88.23529411764706%"
+  },
+  {
+    "entity_a": "Han Dynasty",
+    "entity_b": "Yuan Dynasty",
+    "should_merge": true,
+    "canonical_name": "Yuan Dynasty",
+    "method": "fuzzy",
+    "score": 0.8695652173913043,
+    "reasoning": "Fuzzy token_sort_ratio: 86.95652173913044%"
+  }
+]

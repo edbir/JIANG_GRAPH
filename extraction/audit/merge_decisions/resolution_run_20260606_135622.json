@@ -1,0 +1,38 @@
+[
+  {
+    "entity_a": "al-Aqsa Mosque",
+    "entity_b": "Al-Aqsa Mosque",
+    "should_merge": true,
+    "canonical_name": "Al-Aqsa Mosque",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'al-aqsa mosque'"
+  },
+  {
+    "entity_a": "Islamic Golden Age",
+    "entity_b": "Golden Age of Islam",
+    "should_merge": true,
+    "canonical_name": "Golden Age of Islam",
+    "method": "fuzzy",
+    "score": 0.8648648648648648,
+    "reasoning": "Fuzzy token_sort_ratio: 86.48648648648648%"
+  },
+  {
+    "entity_a": "Persian",
+    "entity_b": "Persians",
+    "should_merge": true,
+    "canonical_name": "Persians",
+    "method": "fuzzy",
+    "score": 0.9333333333333332,
+    "reasoning": "Fuzzy token_sort_ratio: 93.33333333333333%"
+  },
+  {
+    "entity_a": "Constitutes of Medina",
+    "entity_b": "Constitution of Medina",
+    "should_merge": true,
+    "canonical_name": "Constitution of Medina",
+    "method": "fuzzy",
+    "score": 0.8837209302325582,
+    "reasoning": "Fuzzy token_sort_ratio: 88.37209302325581%"
+  }
+]

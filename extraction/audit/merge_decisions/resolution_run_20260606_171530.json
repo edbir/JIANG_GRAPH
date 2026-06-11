@@ -1,0 +1,137 @@
+[
+  {
+    "entity_a": "Dante",
+    "entity_b": "Dante Alighieri",
+    "should_merge": true,
+    "canonical_name": "Dante Alighieri",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'dante'"
+  },
+  {
+    "entity_a": "Galileo",
+    "entity_b": "Galileo Galilei",
+    "should_merge": true,
+    "canonical_name": "Galileo Galilei",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'galileo'"
+  },
+  {
+    "entity_a": "Newton",
+    "entity_b": "Isaac Newton",
+    "should_merge": true,
+    "canonical_name": "Isaac Newton",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'newton'"
+  },
+  {
+    "entity_a": "Newton",
+    "entity_b": "Isaac Newton",
+    "should_merge": true,
+    "canonical_name": "Isaac Newton",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'newton'"
+  },
+  {
+    "entity_a": "Einstein",
+    "entity_b": "Albert Einstein",
+    "should_merge": true,
+    "canonical_name": "Albert Einstein",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'einstein'"
+  },
+  {
+    "entity_a": "Alchemy",
+    "entity_b": "alchemy",
+    "should_merge": true,
+    "canonical_name": "alchemy",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'alchemy'"
+  },
+  {
+    "entity_a": "scientific method",
+    "entity_b": "Scientific Method",
+    "should_merge": true,
+    "canonical_name": "Scientific Method",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'scientific method'"
+  },
+  {
+    "entity_a": "heliocentric model",
+    "entity_b": "Heliocentric Model",
+    "should_merge": true,
+    "canonical_name": "Heliocentric Model",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'heliocentric model'"
+  },
+  {
+    "entity_a": "artificial intelligence",
+    "entity_b": "Artificial Intelligence",
+    "should_merge": true,
+    "canonical_name": "Artificial Intelligence",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'artificial intelligence'"
+  },
+  {
+    "entity_a": "Quantum Mechanics",
+    "entity_b": "quantum mechanics",
+    "should_merge": true,
+    "canonical_name": "quantum mechanics",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'quantum mechanics'"
+  },
+  {
+    "entity_a": "normal science",
+    "entity_b": "Normal Science",
+    "should_merge": true,
+    "canonical_name": "Normal Science",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'normal science'"
+  },
+  {
+    "entity_a": "Catholicism",
+    "entity_b": "Catholic Church",
+    "should_merge": true,
+    "canonical_name": "Catholic Church",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'catholicism'"
+  },
+  {
+    "entity_a": "Scientific Revolution",
+    "entity_b": "scientific revolution",
+    "should_merge": true,
+    "canonical_name": "scientific revolution",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'scientific revolution'"
+  },
+  {
+    "entity_a": "Geocentric Model",
+    "entity_b": "Heliocentric Model",
+    "should_merge": true,
+    "canonical_name": "Heliocentric Model",
+    "method": "fuzzy",
+    "score": 0.8823529411764706,
+    "reasoning": "Fuzzy token_sort_ratio: 88.23529411764706%"
+  },
+  {
+    "entity_a": "Protestants",
+    "entity_b": "Protestantism",
+    "should_merge": true,
+    "canonical_name": "Protestantism",
+    "method": "fuzzy",
+    "score": 0.9166666666666665,
+    "reasoning": "Fuzzy token_sort_ratio: 91.66666666666666%"
+  }
+]

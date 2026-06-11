@@ -1,0 +1,11 @@
+[
+  {
+    "entity_a": "Arabian desert",
+    "entity_b": "Arabian Desert",
+    "should_merge": true,
+    "canonical_name": "Arabian Desert",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'arabian desert'"
+  }
+]

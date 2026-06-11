@@ -80,6 +80,23 @@ Summarize what this community represents."""
 # communities should represent THEMATIC clusters, not structural ones.
 # =============================================================================
 
+async def clear_existing_communities(client: GraphClient):
+    """
+    Wipes the slate clean before a fresh community detection run.
+    Deletes all Community nodes, their relationships, and clears 
+    the communityId arrays from the base entities.
+    """
+    print("Sweeping old communities...")
+    
+    # 1. Delete all Community nodes and any relationships attached to them
+    await client.run("MATCH (c:Community) DETACH DELETE c")
+    
+    # 2. Strip the old Leiden arrays from your base entities
+    await client.run("""
+        MATCH (e) 
+        WHERE e.communityId IS NOT NULL 
+        REMOVE e.communityId
+    """)
 
 async def project_entity_graph(
     client: GraphClient,
@@ -173,6 +190,8 @@ async def run_leiden(
     Returns:
         Dict with communityCount, modularity, ranLevels
     """
+
+
     # Build the Leiden configuration
     config = {
         "writeProperty": "communityId",
@@ -180,6 +199,8 @@ async def run_leiden(
         "gamma": gamma,
         "randomSeed": 42,  # Reproducibility
     }
+
+    print(config)
 
     # If using seed (incremental update), add seedProperty
     if use_seed:
@@ -232,23 +253,23 @@ async def get_community_members(
     members_result = await client.run("""
         MATCH (e)
         WHERE (e:Person OR e:Organization OR e:Topic OR e:Event)
-            AND e.communityId = $communityId
+            AND e.communityId[$level] = $communityId
         RETURN e.name AS name, labels(e) AS labels, e.description AS description
         ORDER BY e.sourceCount DESC
         LIMIT 50
-    """, {"communityId": community_id})
+    """, {"communityId": community_id, "level": level})
 
     # Get internal relationships (between members of the same community)
     rels_result = await client.run("""
         MATCH (a)-[r]->(b)
         WHERE (a:Person OR a:Organization OR a:Topic OR a:Event)
             AND (b:Person OR b:Organization OR b:Topic OR b:Event)
-            AND a.communityId = $communityId
-            AND b.communityId = $communityId
+            AND a.communityId[$level] = $communityId
+            AND b.communityId[$level] = $communityId
         RETURN a.name AS source, type(r) AS relType, b.name AS target,
                r.description AS description
         LIMIT 100
-    """, {"communityId": community_id})
+    """, {"communityId": community_id, "level": level})
 
     return {
         "members": members_result,
@@ -372,14 +393,18 @@ async def create_community_nodes(
         MATCH (e)
         WHERE (e:Person OR e:Organization OR e:Topic OR e:Event)
             AND e.communityId IS NOT NULL
-        RETURN DISTINCT e.communityId AS communityId, count(e) AS memberCount
-        ORDER BY memberCount DESC
+        // Loop through the array to get the index (level) and the specific ID
+        UNWIND range(0, size(e.communityId) - 1) AS level
+        WITH level, e.communityId[level] AS leidenId, e
+        RETURN DISTINCT leidenId AS communityId, level, count(e) AS memberCount
+        ORDER BY level ASC, memberCount DESC
     """)
 
     count = 0
 
     for community in communities:
         community_id = community["communityId"]
+        level = community["level"]  # Extract the newly available level
         member_count = community["memberCount"]
 
         # Skip tiny communities (likely noise)
@@ -387,14 +412,14 @@ async def create_community_nodes(
             continue
 
         # Generate summary
-        summary = await summarize_community(client, llm_client, community_id)
+        summary = await summarize_community(client, llm_client, community_id, level)
 
         # Create Community node
-        node_id = f"community-0-{community_id}"
+        node_id = f"community-{level}-{community_id}"
         await client.run("""
             MERGE (c:Community {communityId: $nodeId})
             ON CREATE SET
-                c.level = 0,
+                c.level = $level,
                 c.summary = $summary,
                 c.memberCount = $memberCount,
                 c.leidenId = $leidenId
@@ -403,6 +428,7 @@ async def create_community_nodes(
                 c.memberCount = $memberCount
         """, {
             "nodeId": node_id,
+            "level": level,
             "summary": summary,
             "memberCount": member_count,
             "leidenId": community_id,
@@ -424,10 +450,10 @@ async def create_community_nodes(
         await client.run("""
             MATCH (e)
             WHERE (e:Person OR e:Organization OR e:Topic OR e:Event)
-                AND e.communityId = $leidenId
+                AND e.communityId[$level] = $leidenId
             MATCH (c:Community {communityId: $nodeId})
-            MERGE (e)-[:IN_COMMUNITY]->(c)
-        """, {"leidenId": community_id, "nodeId": node_id})
+            MERGE (e)-[:IN_COMMUNITY {level: $level}]->(c)
+        """, {"leidenId": community_id, "nodeId": node_id, "level": level})
 
         count += 1
 
@@ -464,6 +490,9 @@ async def detect_and_summarize_communities(
         Dict with statistics: {projected, leiden, communities_created}
     """
     graph_name = "entity-graph"
+
+    if not use_seed:
+        await clear_existing_communities(client)
 
     # Step 1: Project
     projection = await project_entity_graph(client, graph_name)

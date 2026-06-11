@@ -1,0 +1,92 @@
+[
+  {
+    "entity_a": "Scandinavia",
+    "entity_b": "Germanic north",
+    "should_merge": true,
+    "canonical_name": "Germanic north",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'scandinavia'"
+  },
+  {
+    "entity_a": "Trump",
+    "entity_b": "Donald Trump",
+    "should_merge": true,
+    "canonical_name": "Donald Trump",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'trump'"
+  },
+  {
+    "entity_a": "civil conflict",
+    "entity_b": "Civil conflict",
+    "should_merge": true,
+    "canonical_name": "Civil conflict",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'civil conflict'"
+  },
+  {
+    "entity_a": "Cycle of history",
+    "entity_b": "cycle of history",
+    "should_merge": true,
+    "canonical_name": "cycle of history",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'cycle of history'"
+  },
+  {
+    "entity_a": "mandate of heaven",
+    "entity_b": "Mandate of Heaven",
+    "should_merge": true,
+    "canonical_name": "Mandate of Heaven",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'mandate of heaven'"
+  },
+  {
+    "entity_a": "Rat Utopia",
+    "entity_b": "rat utopia",
+    "should_merge": true,
+    "canonical_name": "rat utopia",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'rat utopia'"
+  },
+  {
+    "entity_a": "Arabia",
+    "entity_b": "Arabians",
+    "should_merge": true,
+    "canonical_name": "Arabians",
+    "method": "fuzzy",
+    "score": 0.8571428571428572,
+    "reasoning": "Fuzzy token_sort_ratio: 85.71428571428572%"
+  },
+  {
+    "entity_a": "Mongolia",
+    "entity_b": "Mongolians",
+    "should_merge": true,
+    "canonical_name": "Mongolians",
+    "method": "fuzzy",
+    "score": 0.8888888888888888,
+    "reasoning": "Fuzzy token_sort_ratio: 88.88888888888889%"
+  },
+  {
+    "entity_a": "male rats",
+    "entity_b": "female rats",
+    "should_merge": true,
+    "canonical_name": "female rats",
+    "method": "fuzzy",
+    "score": 0.9,
+    "reasoning": "Fuzzy token_sort_ratio: 90.0%"
+  },
+  {
+    "entity_a": "World War II",
+    "entity_b": "World War III",
+    "should_merge": true,
+    "canonical_name": "World War III",
+    "method": "fuzzy",
+    "score": 0.96,
+    "reasoning": "Fuzzy token_sort_ratio: 96.0%"
+  }
+]

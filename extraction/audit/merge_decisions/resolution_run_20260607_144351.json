@@ -1,0 +1,65 @@
+[
+  {
+    "entity_a": "Shakespeare",
+    "entity_b": "William Shakespeare",
+    "should_merge": true,
+    "canonical_name": "William Shakespeare",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'shakespeare'"
+  },
+  {
+    "entity_a": "Shakespeare",
+    "entity_b": "William Shakespeare",
+    "should_merge": true,
+    "canonical_name": "William Shakespeare",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'shakespeare'"
+  },
+  {
+    "entity_a": "Dante",
+    "entity_b": "Dante Alighieri",
+    "should_merge": true,
+    "canonical_name": "Dante Alighieri",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'dante'"
+  },
+  {
+    "entity_a": "Dante",
+    "entity_b": "Dante Alighieri",
+    "should_merge": true,
+    "canonical_name": "Dante Alighieri",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'dante'"
+  },
+  {
+    "entity_a": "Britain",
+    "entity_b": "British",
+    "should_merge": true,
+    "canonical_name": "British",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'britain'"
+  },
+  {
+    "entity_a": "World War I",
+    "entity_b": "World War II",
+    "should_merge": true,
+    "canonical_name": "World War II",
+    "method": "fuzzy",
+    "score": 0.9565217391304348,
+    "reasoning": "Fuzzy token_sort_ratio: 95.65217391304348%"
+  },
+  {
+    "entity_a": "psychological studies",
+    "entity_b": "psychological studies of humanity",
+    "should_merge": true,
+    "canonical_name": "psychological studies of humanity",
+    "method": "embedding",
+    "score": 0.9269686816606056,
+    "reasoning": "Embedding cosine similarity: 0.927"
+  }
+]

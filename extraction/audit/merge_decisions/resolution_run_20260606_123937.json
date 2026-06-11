@@ -1,0 +1,11 @@
+[
+  {
+    "entity_a": "Pope Leo",
+    "entity_b": "Pope Leo III",
+    "should_merge": true,
+    "canonical_name": "Pope Leo III",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'pope leo'"
+  }
+]

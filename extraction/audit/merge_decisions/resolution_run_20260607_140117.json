@@ -1,0 +1,56 @@
+[
+  {
+    "entity_a": "Netherlands",
+    "entity_b": "Low Countries",
+    "should_merge": true,
+    "canonical_name": "Low Countries",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'netherlands'"
+  },
+  {
+    "entity_a": "wealth",
+    "entity_b": "Wealth",
+    "should_merge": true,
+    "canonical_name": "Wealth",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'wealth'"
+  },
+  {
+    "entity_a": "art market",
+    "entity_b": "Art market",
+    "should_merge": true,
+    "canonical_name": "Art market",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'art market'"
+  },
+  {
+    "entity_a": "anxiety",
+    "entity_b": "Anxiety",
+    "should_merge": true,
+    "canonical_name": "Anxiety",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'anxiety'"
+  },
+  {
+    "entity_a": "Middle class",
+    "entity_b": "middle class",
+    "should_merge": true,
+    "canonical_name": "middle class",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'middle class'"
+  },
+  {
+    "entity_a": "Boundaries",
+    "entity_b": "boundaries",
+    "should_merge": true,
+    "canonical_name": "boundaries",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'boundaries'"
+  }
+]

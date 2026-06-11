@@ -1,0 +1,38 @@
+[
+  {
+    "entity_a": "Dante",
+    "entity_b": "Dante Alighieri",
+    "should_merge": true,
+    "canonical_name": "Dante Alighieri",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'dante'"
+  },
+  {
+    "entity_a": "Jesus",
+    "entity_b": "Jesus Christ",
+    "should_merge": true,
+    "canonical_name": "Jesus Christ",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'jesus'"
+  },
+  {
+    "entity_a": "Limbo",
+    "entity_b": "limbo",
+    "should_merge": true,
+    "canonical_name": "limbo",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'limbo'"
+  },
+  {
+    "entity_a": "Roman Empire",
+    "entity_b": "The Roman Empire",
+    "should_merge": true,
+    "canonical_name": "The Roman Empire",
+    "method": "fuzzy",
+    "score": 0.8571428571428572,
+    "reasoning": "Fuzzy token_sort_ratio: 85.71428571428572%"
+  }
+]

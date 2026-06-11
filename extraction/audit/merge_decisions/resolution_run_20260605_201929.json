@@ -1,0 +1,38 @@
+[
+  {
+    "entity_a": "Monotheism",
+    "entity_b": "monotheism",
+    "should_merge": true,
+    "canonical_name": "monotheism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'monotheism'"
+  },
+  {
+    "entity_a": "Capitalism",
+    "entity_b": "capitalism",
+    "should_merge": true,
+    "canonical_name": "capitalism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'capitalism'"
+  },
+  {
+    "entity_a": "Science",
+    "entity_b": "science",
+    "should_merge": true,
+    "canonical_name": "science",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'science'"
+  },
+  {
+    "entity_a": "nation state",
+    "entity_b": "Nation State",
+    "should_merge": true,
+    "canonical_name": "Nation State",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'nation state'"
+  }
+]

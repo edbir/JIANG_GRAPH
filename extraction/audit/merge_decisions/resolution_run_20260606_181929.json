@@ -1,0 +1,38 @@
+[
+  {
+    "entity_a": "Louis XVI",
+    "entity_b": "King Louis XVI",
+    "should_merge": true,
+    "canonical_name": "King Louis XVI",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'louis xvi'"
+  },
+  {
+    "entity_a": "terror",
+    "entity_b": "Terror",
+    "should_merge": true,
+    "canonical_name": "Terror",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'terror'"
+  },
+  {
+    "entity_a": "Jacobin",
+    "entity_b": "Jacobins",
+    "should_merge": true,
+    "canonical_name": "Jacobins",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'jacobin'"
+  },
+  {
+    "entity_a": "Sainte-Colotte",
+    "entity_b": "Sainte-Colottes",
+    "should_merge": true,
+    "canonical_name": "Sainte-Colottes",
+    "method": "fuzzy",
+    "score": 0.9655172413793103,
+    "reasoning": "Fuzzy token_sort_ratio: 96.55172413793103%"
+  }
+]

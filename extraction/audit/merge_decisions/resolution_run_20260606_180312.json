@@ -1,0 +1,38 @@
+[
+  {
+    "entity_a": "Heaven",
+    "entity_b": "heaven",
+    "should_merge": true,
+    "canonical_name": "heaven",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'heaven'"
+  },
+  {
+    "entity_a": "knowledge",
+    "entity_b": "Knowledge",
+    "should_merge": true,
+    "canonical_name": "Knowledge",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'knowledge'"
+  },
+  {
+    "entity_a": "Rousseau",
+    "entity_b": "Jean-Jacques Rousseau",
+    "should_merge": true,
+    "canonical_name": "Jean-Jacques Rousseau",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'rousseau'"
+  },
+  {
+    "entity_a": "World War I",
+    "entity_b": "World War II",
+    "should_merge": true,
+    "canonical_name": "World War II",
+    "method": "fuzzy",
+    "score": 0.9565217391304348,
+    "reasoning": "Fuzzy token_sort_ratio: 95.65217391304348%"
+  }
+]

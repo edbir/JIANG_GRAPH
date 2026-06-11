@@ -1,0 +1,20 @@
+[
+  {
+    "entity_a": "Kingdom of Heaven",
+    "entity_b": "kingdom of heaven",
+    "should_merge": true,
+    "canonical_name": "kingdom of heaven",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'kingdom of heaven'"
+  },
+  {
+    "entity_a": "the teachings of Jesus",
+    "entity_b": "the true teaching of Jesus",
+    "should_merge": true,
+    "canonical_name": "the true teaching of Jesus",
+    "method": "fuzzy",
+    "score": 0.875,
+    "reasoning": "Fuzzy token_sort_ratio: 87.5%"
+  }
+]

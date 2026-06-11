@@ -1,0 +1,137 @@
+[
+  {
+    "entity_a": "Marx",
+    "entity_b": "Karl Marx",
+    "should_merge": true,
+    "canonical_name": "Karl Marx",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'marx'"
+  },
+  {
+    "entity_a": "Marx",
+    "entity_b": "Karl Marx",
+    "should_merge": true,
+    "canonical_name": "Karl Marx",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'marx'"
+  },
+  {
+    "entity_a": "Kant",
+    "entity_b": "Immanuel Kant",
+    "should_merge": true,
+    "canonical_name": "Immanuel Kant",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'kant'"
+  },
+  {
+    "entity_a": "Hegel",
+    "entity_b": "Frederick Hegel",
+    "should_merge": true,
+    "canonical_name": "Frederick Hegel",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'hegel'"
+  },
+  {
+    "entity_a": "Stalin",
+    "entity_b": "Joseph Stalin",
+    "should_merge": true,
+    "canonical_name": "Joseph Stalin",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'stalin'"
+  },
+  {
+    "entity_a": "Stalin",
+    "entity_b": "Joseph Stalin",
+    "should_merge": true,
+    "canonical_name": "Joseph Stalin",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'stalin'"
+  },
+  {
+    "entity_a": "communism",
+    "entity_b": "Communism",
+    "should_merge": true,
+    "canonical_name": "Communism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'communism'"
+  },
+  {
+    "entity_a": "agriculture",
+    "entity_b": "Agriculture",
+    "should_merge": true,
+    "canonical_name": "Agriculture",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'agriculture'"
+  },
+  {
+    "entity_a": "Civilization",
+    "entity_b": "civilization",
+    "should_merge": true,
+    "canonical_name": "civilization",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'civilization'"
+  },
+  {
+    "entity_a": "feudalism",
+    "entity_b": "Feudalism",
+    "should_merge": true,
+    "canonical_name": "Feudalism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'feudalism'"
+  },
+  {
+    "entity_a": "Industrial Capitalism",
+    "entity_b": "industrial capitalism",
+    "should_merge": true,
+    "canonical_name": "industrial capitalism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'industrial capitalism'"
+  },
+  {
+    "entity_a": "capitalism",
+    "entity_b": "Capitalism",
+    "should_merge": true,
+    "canonical_name": "Capitalism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'capitalism'"
+  },
+  {
+    "entity_a": "human misery",
+    "entity_b": "Human Misery",
+    "should_merge": true,
+    "canonical_name": "Human Misery",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'human misery'"
+  },
+  {
+    "entity_a": "bourgeoisie",
+    "entity_b": "Bourgeoisie",
+    "should_merge": true,
+    "canonical_name": "Bourgeoisie",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'bourgeoisie'"
+  },
+  {
+    "entity_a": "Young Hegelians",
+    "entity_b": "young Hegelians",
+    "should_merge": true,
+    "canonical_name": "young Hegelians",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'young hegelians'"
+  }
+]

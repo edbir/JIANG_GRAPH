@@ -160,13 +160,13 @@ class Settings(BaseSettings):
     # =========================================================================
 
     fuzzy_match_threshold: int = Field(
-        default=85,
+        default=96,
         description="RapidFuzz token_sort_ratio threshold for fuzzy entity matching. "
         "Pairs scoring above this are considered potential duplicates."
     )
 
     embedding_similarity_threshold: float = Field(
-        default=0.90,
+        default=0.92,
         description="Cosine similarity threshold for embedding-based entity matching."
     )
 

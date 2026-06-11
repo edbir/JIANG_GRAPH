@@ -1,0 +1,74 @@
+[
+  {
+    "entity_a": "Bank of International Settlements",
+    "entity_b": "Bank for International Settlements",
+    "should_merge": true,
+    "canonical_name": "Bank for International Settlements",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'bank of international settlements'"
+  },
+  {
+    "entity_a": "National Monetary Fund",
+    "entity_b": "International Monetary Fund",
+    "should_merge": true,
+    "canonical_name": "International Monetary Fund",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'national monetary fund'"
+  },
+  {
+    "entity_a": "United States",
+    "entity_b": "United States of America",
+    "should_merge": true,
+    "canonical_name": "United States of America",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'united states'"
+  },
+  {
+    "entity_a": "America",
+    "entity_b": "United States of America",
+    "should_merge": true,
+    "canonical_name": "United States of America",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'america'"
+  },
+  {
+    "entity_a": "Debt",
+    "entity_b": "debt",
+    "should_merge": true,
+    "canonical_name": "debt",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'debt'"
+  },
+  {
+    "entity_a": "Financialization",
+    "entity_b": "financialization",
+    "should_merge": true,
+    "canonical_name": "financialization",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'financialization'"
+  },
+  {
+    "entity_a": "World War II",
+    "entity_b": "World War III",
+    "should_merge": true,
+    "canonical_name": "World War III",
+    "method": "fuzzy",
+    "score": 0.96,
+    "reasoning": "Fuzzy token_sort_ratio: 96.0%"
+  },
+  {
+    "entity_a": "Plaza Accord",
+    "entity_b": "Plaza Accords",
+    "should_merge": true,
+    "canonical_name": "Plaza Accords",
+    "method": "fuzzy",
+    "score": 0.96,
+    "reasoning": "Fuzzy token_sort_ratio: 96.0%"
+  }
+]

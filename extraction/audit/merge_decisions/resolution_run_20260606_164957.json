@@ -1,0 +1,92 @@
+[
+  {
+    "entity_a": "Ransom Theory",
+    "entity_b": "ransom theory",
+    "should_merge": true,
+    "canonical_name": "ransom theory",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'ransom theory'"
+  },
+  {
+    "entity_a": "Freedom of the Will",
+    "entity_b": "freedom of the will",
+    "should_merge": true,
+    "canonical_name": "freedom of the will",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'freedom of the will'"
+  },
+  {
+    "entity_a": "Imagination",
+    "entity_b": "imagination",
+    "should_merge": true,
+    "canonical_name": "imagination",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'imagination'"
+  },
+  {
+    "entity_a": "Love",
+    "entity_b": "love",
+    "should_merge": true,
+    "canonical_name": "love",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'love'"
+  },
+  {
+    "entity_a": "Medici",
+    "entity_b": "Medici family",
+    "should_merge": true,
+    "canonical_name": "Medici family",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'medici'"
+  },
+  {
+    "entity_a": "Medici",
+    "entity_b": "Medici family",
+    "should_merge": true,
+    "canonical_name": "Medici family",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'medici'"
+  },
+  {
+    "entity_a": "Dante",
+    "entity_b": "Dante Alighieri",
+    "should_merge": true,
+    "canonical_name": "Dante Alighieri",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'dante'"
+  },
+  {
+    "entity_a": "Dante",
+    "entity_b": "Dante Alighieri",
+    "should_merge": true,
+    "canonical_name": "Dante Alighieri",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'dante'"
+  },
+  {
+    "entity_a": "Da Vinci",
+    "entity_b": "Leonardo da Vinci",
+    "should_merge": true,
+    "canonical_name": "Leonardo da Vinci",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'da vinci'"
+  },
+  {
+    "entity_a": "Divine Comedy",
+    "entity_b": "The Divine Comedy",
+    "should_merge": true,
+    "canonical_name": "The Divine Comedy",
+    "method": "fuzzy",
+    "score": 0.8666666666666667,
+    "reasoning": "Fuzzy token_sort_ratio: 86.66666666666667%"
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "entity_a": "Mayan civilization",
+    "entity_b": "Mayan Civilization",
+    "should_merge": true,
+    "canonical_name": "Mayan Civilization",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'mayan civilization'"
+  },
+  {
+    "entity_a": "Hernan Cortes",
+    "entity_b": "Hernán Cortés",
+    "should_merge": true,
+    "canonical_name": "Hernán Cortés",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'hernan cortes'"
+  },
+  {
+    "entity_a": "Mayan",
+    "entity_b": "Mayans",
+    "should_merge": true,
+    "canonical_name": "Mayans",
+    "method": "fuzzy",
+    "score": 0.9090909090909091,
+    "reasoning": "Fuzzy token_sort_ratio: 90.9090909090909%"
+  }
+]

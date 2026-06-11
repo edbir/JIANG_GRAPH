@@ -1,0 +1,128 @@
+[
+  {
+    "entity_a": "Capitalism",
+    "entity_b": "capitalism",
+    "should_merge": true,
+    "canonical_name": "capitalism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'capitalism'"
+  },
+  {
+    "entity_a": "anxiety",
+    "entity_b": "Anxiety",
+    "should_merge": true,
+    "canonical_name": "Anxiety",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'anxiety'"
+  },
+  {
+    "entity_a": "fascism",
+    "entity_b": "Fascism",
+    "should_merge": true,
+    "canonical_name": "Fascism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'fascism'"
+  },
+  {
+    "entity_a": "communism",
+    "entity_b": "Communism",
+    "should_merge": true,
+    "canonical_name": "Communism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'communism'"
+  },
+  {
+    "entity_a": "Zombie civilization",
+    "entity_b": "zombie civilization",
+    "should_merge": true,
+    "canonical_name": "zombie civilization",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'zombie civilization'"
+  },
+  {
+    "entity_a": "Nazism",
+    "entity_b": "Fascism",
+    "should_merge": true,
+    "canonical_name": "Fascism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'nazism'"
+  },
+  {
+    "entity_a": "Protestantism",
+    "entity_b": "Protestant religion",
+    "should_merge": true,
+    "canonical_name": "Protestant religion",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'protestantism'"
+  },
+  {
+    "entity_a": "Georg Simmel",
+    "entity_b": "George Simmel",
+    "should_merge": true,
+    "canonical_name": "George Simmel",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'georg simmel'"
+  },
+  {
+    "entity_a": "Durkheim",
+    "entity_b": "Emil Durkheim",
+    "should_merge": true,
+    "canonical_name": "Emil Durkheim",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'durkheim'"
+  },
+  {
+    "entity_a": "World War I",
+    "entity_b": "World War II",
+    "should_merge": true,
+    "canonical_name": "World War II",
+    "method": "fuzzy",
+    "score": 0.9565217391304348,
+    "reasoning": "Fuzzy token_sort_ratio: 95.65217391304348%"
+  },
+  {
+    "entity_a": "Holy Trinity",
+    "entity_b": "the Holy Trinity",
+    "should_merge": true,
+    "canonical_name": "the Holy Trinity",
+    "method": "fuzzy",
+    "score": 0.8571428571428572,
+    "reasoning": "Fuzzy token_sort_ratio: 85.71428571428572%"
+  },
+  {
+    "entity_a": "northern Europe",
+    "entity_b": "southern Europe",
+    "should_merge": true,
+    "canonical_name": "southern Europe",
+    "method": "fuzzy",
+    "score": 0.8666666666666667,
+    "reasoning": "Fuzzy token_sort_ratio: 86.66666666666667%"
+  },
+  {
+    "entity_a": "Protestant religion",
+    "entity_b": "the Protestant religion",
+    "should_merge": true,
+    "canonical_name": "the Protestant religion",
+    "method": "fuzzy",
+    "score": 0.9047619047619048,
+    "reasoning": "Fuzzy token_sort_ratio: 90.47619047619048%"
+  },
+  {
+    "entity_a": "Emil Durkheim",
+    "entity_b": "Emile Durkheim",
+    "should_merge": true,
+    "canonical_name": "Emile Durkheim",
+    "method": "fuzzy",
+    "score": 0.962962962962963,
+    "reasoning": "Fuzzy token_sort_ratio: 96.2962962962963%"
+  }
+]

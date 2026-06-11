@@ -1,0 +1,110 @@
+[
+  {
+    "entity_a": "Italian peninsula",
+    "entity_b": "Italian Peninsula",
+    "should_merge": true,
+    "canonical_name": "Italian Peninsula",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'italian peninsula'"
+  },
+  {
+    "entity_a": "Feudalism",
+    "entity_b": "feudalism",
+    "should_merge": true,
+    "canonical_name": "feudalism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'feudalism'"
+  },
+  {
+    "entity_a": "Cannons",
+    "entity_b": "cannons",
+    "should_merge": true,
+    "canonical_name": "cannons",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'cannons'"
+  },
+  {
+    "entity_a": "bureaucracy",
+    "entity_b": "Bureaucracy",
+    "should_merge": true,
+    "canonical_name": "Bureaucracy",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'bureaucracy'"
+  },
+  {
+    "entity_a": "Gunpowder",
+    "entity_b": "gunpowder",
+    "should_merge": true,
+    "canonical_name": "gunpowder",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'gunpowder'"
+  },
+  {
+    "entity_a": "Star Fortress",
+    "entity_b": "star fortress",
+    "should_merge": true,
+    "canonical_name": "star fortress",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'star fortress'"
+  },
+  {
+    "entity_a": "science",
+    "entity_b": "Science",
+    "should_merge": true,
+    "canonical_name": "Science",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'science'"
+  },
+  {
+    "entity_a": "Religion",
+    "entity_b": "religion",
+    "should_merge": true,
+    "canonical_name": "religion",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'religion'"
+  },
+  {
+    "entity_a": "Social Hierarchy",
+    "entity_b": "social hierarchy",
+    "should_merge": true,
+    "canonical_name": "social hierarchy",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'social hierarchy'"
+  },
+  {
+    "entity_a": "China",
+    "entity_b": "Ming Empire",
+    "should_merge": true,
+    "canonical_name": "Ming Empire",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'china'"
+  },
+  {
+    "entity_a": "American Revolution",
+    "entity_b": "American Revolutions",
+    "should_merge": true,
+    "canonical_name": "American Revolutions",
+    "method": "fuzzy",
+    "score": 0.9743589743589743,
+    "reasoning": "Fuzzy token_sort_ratio: 97.43589743589743%"
+  },
+  {
+    "entity_a": "World War I",
+    "entity_b": "World War II",
+    "should_merge": true,
+    "canonical_name": "World War II",
+    "method": "fuzzy",
+    "score": 0.9565217391304348,
+    "reasoning": "Fuzzy token_sort_ratio: 95.65217391304348%"
+  }
+]

@@ -239,75 +239,75 @@ async def ingest_episode(
     # --- Initialize clients ---
     openai_client = AsyncOpenAI(api_key=settings.openai_api_key)
 
-    print(f"[ingest] Starting ingestion of {episode_id}: {title}")
+    # print(f"[ingest] Starting ingestion of {episode_id}: {title}")
 
-    # --- Step 1: Read transcript ---
-    transcript_text = Path(transcript_path).read_text(encoding="utf-8")
-    stats["raw_chars"] = len(transcript_text)
-    print(f"[ingest] Read transcript: {stats['raw_chars']} chars")
+    # # --- Step 1: Read transcript ---
+    # transcript_text = Path(transcript_path).read_text(encoding="utf-8")
+    # stats["raw_chars"] = len(transcript_text)
+    # print(f"[ingest] Read transcript: {stats['raw_chars']} chars")
 
-    # --- Step 2: Clean text ---
-    clean_text = clean_transcript(transcript_text)
-    stats["clean_chars"] = len(clean_text)
-    print(f"[ingest] Cleaned: {stats['clean_chars']} chars ({stats['raw_chars'] - stats['clean_chars']} removed)")
+    # # --- Step 2: Clean text ---
+    # clean_text = clean_transcript(transcript_text)
+    # stats["clean_chars"] = len(clean_text)
+    # print(f"[ingest] Cleaned: {stats['clean_chars']} chars ({stats['raw_chars'] - stats['clean_chars']} removed)")
 
-    # --- Step 3: Chunk ---
-    chunks = await chunk_transcript(
-        text=clean_text,
-        episode_id=episode_id,
-        llm_client=openai_client,
-        model=settings.model_segmentation,
-        max_chunk_tokens=settings.max_chunk_tokens,
-        min_chunk_tokens=settings.min_chunk_tokens,
-        overlap_sentences=settings.overlap_sentences,
-        window_size=settings.segmentation_window_size,
-        window_overlap=settings.segmentation_window_overlap,
-    )
-    stats["chunks"] = len(chunks)
-    stats["segments"] = len(set(c.segment_index for c in chunks))
-    print(f"[ingest] Chunked: {stats['segments']} segments, {stats['chunks']} chunks")
+    # # --- Step 3: Chunk ---
+    # chunks = await chunk_transcript(
+    #     text=clean_text,
+    #     episode_id=episode_id,
+    #     llm_client=openai_client,
+    #     model=settings.model_segmentation,
+    #     max_chunk_tokens=settings.max_chunk_tokens,
+    #     min_chunk_tokens=settings.min_chunk_tokens,
+    #     overlap_sentences=settings.overlap_sentences,
+    #     window_size=settings.segmentation_window_size,
+    #     window_overlap=settings.segmentation_window_overlap,
+    # )
+    # stats["chunks"] = len(chunks)
+    # stats["segments"] = len(set(c.segment_index for c in chunks))
+    # print(f"[ingest] Chunked: {stats['segments']} segments, {stats['chunks']} chunks")
 
-    # --- Step 4: Extract ---
-    print(f"[ingest] Extracting knowledge ({stats['chunks']} chunks × 3 passes)...")
-    extraction_results = await process_episode(
-        client=openai_client,
-        chunks=chunks,
-        episode_title=title,
-        episode_number=episode_number,
-        episode_context=episode_context,
-    )
+    # # --- Step 4: Extract ---
+    # print(f"[ingest] Extracting knowledge ({stats['chunks']} chunks × 3 passes)...")
+    # extraction_results = await process_episode(
+    #     client=openai_client,
+    #     chunks=chunks,
+    #     episode_title=title,
+    #     episode_number=episode_number,
+    #     episode_context=episode_context,
+    # )
 
-    # Count extractions
-    total_entities = sum(len(r.entities) for r in extraction_results["entities"].values())
-    total_rels = sum(len(r.relationships) for r in extraction_results["relationships"].values())
-    total_claims = sum(len(r.claims) for r in extraction_results["claims"].values())
-    stats["entities_extracted"] = total_entities
-    stats["relationships_extracted"] = total_rels
-    stats["claims_extracted"] = total_claims
-    print(f"[ingest] Extracted: {total_entities} entities, {total_rels} relationships, {total_claims} claims")
+    # # Count extractions
+    # total_entities = sum(len(r.entities) for r in extraction_results["entities"].values())
+    # total_rels = sum(len(r.relationships) for r in extraction_results["relationships"].values())
+    # total_claims = sum(len(r.claims) for r in extraction_results["claims"].values())
+    # stats["entities_extracted"] = total_entities
+    # stats["relationships_extracted"] = total_rels
+    # stats["claims_extracted"] = total_claims
+    # print(f"[ingest] Extracted: {total_entities} entities, {total_rels} relationships, {total_claims} claims")
 
-    # --- Step 5: Entity resolution ---
-    candidates = collect_entity_candidates(extraction_results)
-    merge_map, decisions = await resolve_entities(candidates, client=openai_client)
-    # Lets print the merge map and decisions in a pretty and readable way in the terminal for debugging and transparency
-    print("Merge Map:")
-    for src, dst in merge_map.items():
-        print(f"  {src} -> {dst}")
-    print("Decisions:")
-    for decision in decisions:
-        print(f"  {decision.entity_a} vs {decision.entity_b}")
-        print(f"    Should merge: {decision.should_merge}")
-        print(f"    Canonical name: {decision.canonical_name}")
-        print(f"    Method: {decision.method}")
-        print(f"    Score: {decision.score}")
-        print(f"    Reasoning: {decision.reasoning}")
+    # # --- Step 5: Entity resolution ---
+    # candidates = collect_entity_candidates(extraction_results)
+    # merge_map, decisions = await resolve_entities(candidates, client=openai_client)
+    # # Lets print the merge map and decisions in a pretty and readable way in the terminal for debugging and transparency
+    # print("Merge Map:")
+    # for src, dst in merge_map.items():
+    #     print(f"  {src} -> {dst}")
+    # print("Decisions:")
+    # for decision in decisions:
+    #     print(f"  {decision.entity_a} vs {decision.entity_b}")
+    #     print(f"    Should merge: {decision.should_merge}")
+    #     print(f"    Canonical name: {decision.canonical_name}")
+    #     print(f"    Method: {decision.method}")
+    #     print(f"    Score: {decision.score}")
+    #     print(f"    Reasoning: {decision.reasoning}")
 
     
   
 
-    stats["entities_merged"] = sum(1 for d in decisions if d.should_merge)
-    stats["unique_entities"] = len(candidates) - stats["entities_merged"]
-    print(f"[ingest] Resolved: {stats['entities_merged']} merges, {stats['unique_entities']} unique entities")
+    # stats["entities_merged"] = sum(1 for d in decisions if d.should_merge)
+    # stats["unique_entities"] = len(candidates) - stats["entities_merged"]
+    # print(f"[ingest] Resolved: {stats['entities_merged']} merges, {stats['unique_entities']} unique entities")
 
     # --- Step 6: Upsert into Neo4j ---
     print("[ingest] Upserting into Neo4j...")
@@ -315,46 +315,58 @@ async def ingest_episode(
         # Ensure schema exists (idempotent)
         await graph_client.setup_schema()
 
-        # Build segments from chunks (reconstruct for upsert)
-        segments = _reconstruct_segments(chunks)
-
-        # Upsert all data
-        upsert_counts = await upsert_episode_data(
-            client=graph_client,
-            episode_id=episode_id,
-            episode_title=title,
-            episode_number=episode_number,
-            segments=segments,
-            chunks=chunks,
-            extraction_results=extraction_results,
-            merge_map=merge_map,
-        )
-        stats["upserted"] = upsert_counts
-        print(f"[ingest] Upserted: {upsert_counts}")
-
-        # --- Step 7: Generate embeddings ---
-        print("[ingest] Generating embeddings...")
-        embed_count = await generate_embeddings(
-            openai_client=openai_client,
-            graph_client=graph_client,
-            chunks=chunks,
-            extraction_results=extraction_results,
-            merge_map=merge_map,
-        )
-        stats["embeddings"] = embed_count
-        print(f"[ingest] Embeddings: {embed_count} generated")
-
-        # --- Step 8: Community detection (optional) ---
         if run_communities:
             print("[ingest] Running community detection...")
             from src.graph.communities import detect_and_summarize_communities
             community_stats = await detect_and_summarize_communities(
                 client=graph_client,
                 llm_client=openai_client,
-                use_seed=True,  # Incremental
+                use_seed=False,  # Incremental (CHANGE USE SEED TO FALSE IN EPISODE 48)
+                gamma=1.0,  # Adjust gamma as needed
             )
             stats["communities"] = community_stats
             print(f"[ingest] Communities: {community_stats['communities_created']} created")
+
+        # # Build segments from chunks (reconstruct for upsert)
+        # segments = _reconstruct_segments(chunks)
+
+        # # Upsert all data
+        # upsert_counts = await upsert_episode_data(
+        #     client=graph_client,
+        #     episode_id=episode_id,
+        #     episode_title=title,
+        #     episode_number=episode_number,
+        #     segments=segments,
+        #     chunks=chunks,
+        #     extraction_results=extraction_results,
+        #     merge_map=merge_map,
+        # )
+        # stats["upserted"] = upsert_counts
+        # print(f"[ingest] Upserted: {upsert_counts}")
+
+        # # --- Step 7: Generate embeddings ---
+        # print("[ingest] Generating embeddings...")
+        # embed_count = await generate_embeddings(
+        #     openai_client=openai_client,
+        #     graph_client=graph_client,
+        #     chunks=chunks,
+        #     extraction_results=extraction_results,
+        #     merge_map=merge_map,
+        # )
+        # stats["embeddings"] = embed_count
+        # print(f"[ingest] Embeddings: {embed_count} generated")
+
+        # # --- Step 8: Community detection (optional) ---
+        # if run_communities:
+        #     print("[ingest] Running community detection...")
+        #     from src.graph.communities import detect_and_summarize_communities
+        #     community_stats = await detect_and_summarize_communities(
+        #         client=graph_client,
+        #         llm_client=openai_client,
+        #         use_seed=False,  # Incremental (CHANGE USE SEED TO FALSE IN EPISODE 48)
+        #     )
+        #     stats["communities"] = community_stats
+        #     print(f"[ingest] Communities: {community_stats['communities_created']} created")
 
     print(f"[ingest] ✓ Done! Episode {episode_id} ingested successfully.")
     return stats

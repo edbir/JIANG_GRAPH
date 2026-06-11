@@ -1,0 +1,29 @@
+[
+  {
+    "entity_a": "oral tradition",
+    "entity_b": "Oral Tradition",
+    "should_merge": true,
+    "canonical_name": "Oral Tradition",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'oral tradition'"
+  },
+  {
+    "entity_a": "sacrifice",
+    "entity_b": "Sacrifice",
+    "should_merge": true,
+    "canonical_name": "Sacrifice",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'sacrifice'"
+  },
+  {
+    "entity_a": "Viking tradition",
+    "entity_b": "Viking old tradition",
+    "should_merge": true,
+    "canonical_name": "Viking old tradition",
+    "method": "fuzzy",
+    "score": 0.8888888888888888,
+    "reasoning": "Fuzzy token_sort_ratio: 88.88888888888889%"
+  }
+]

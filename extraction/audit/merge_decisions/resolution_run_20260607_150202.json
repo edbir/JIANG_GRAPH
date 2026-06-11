@@ -1,0 +1,11 @@
+[
+  {
+    "entity_a": "Dostoevsky",
+    "entity_b": "Fyodor Dostoevsky",
+    "should_merge": true,
+    "canonical_name": "Fyodor Dostoevsky",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'dostoevsky'"
+  }
+]

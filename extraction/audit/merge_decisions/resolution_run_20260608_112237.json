@@ -1,0 +1,110 @@
+[
+  {
+    "entity_a": "Stalin",
+    "entity_b": "Joseph Stalin",
+    "should_merge": true,
+    "canonical_name": "Joseph Stalin",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'stalin'"
+  },
+  {
+    "entity_a": "Stalin",
+    "entity_b": "Joseph Stalin",
+    "should_merge": true,
+    "canonical_name": "Joseph Stalin",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'stalin'"
+  },
+  {
+    "entity_a": "Lenin",
+    "entity_b": "Vladimir Lenin",
+    "should_merge": true,
+    "canonical_name": "Vladimir Lenin",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'lenin'"
+  },
+  {
+    "entity_a": "Robespierre",
+    "entity_b": "Maximilien Robespierre",
+    "should_merge": true,
+    "canonical_name": "Maximilien Robespierre",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'robespierre'"
+  },
+  {
+    "entity_a": "Napoleon Bonaparte",
+    "entity_b": "Napoleon of France",
+    "should_merge": true,
+    "canonical_name": "Napoleon of France",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'napoleon bonaparte'"
+  },
+  {
+    "entity_a": "Putin",
+    "entity_b": "Vladimir Putin",
+    "should_merge": true,
+    "canonical_name": "Vladimir Putin",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'putin'"
+  },
+  {
+    "entity_a": "Churchill",
+    "entity_b": "Winston Churchill",
+    "should_merge": true,
+    "canonical_name": "Winston Churchill",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'churchill'"
+  },
+  {
+    "entity_a": "Bolsheviks",
+    "entity_b": "Bolshevik Party",
+    "should_merge": true,
+    "canonical_name": "Bolshevik Party",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'bolsheviks'"
+  },
+  {
+    "entity_a": "Mensheviks",
+    "entity_b": "Menshevik Party",
+    "should_merge": true,
+    "canonical_name": "Menshevik Party",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'mensheviks'"
+  },
+  {
+    "entity_a": "England",
+    "entity_b": "Britain",
+    "should_merge": true,
+    "canonical_name": "Britain",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'england'"
+  },
+  {
+    "entity_a": "Communism",
+    "entity_b": "communism",
+    "should_merge": true,
+    "canonical_name": "communism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'communism'"
+  },
+  {
+    "entity_a": "Alexander II",
+    "entity_b": "Alexander III",
+    "should_merge": true,
+    "canonical_name": "Alexander III",
+    "method": "fuzzy",
+    "score": 0.96,
+    "reasoning": "Fuzzy token_sort_ratio: 96.0%"
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "entity_a": "Jesus",
+    "entity_b": "Jesus Christ",
+    "should_merge": true,
+    "canonical_name": "Jesus Christ",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'jesus'"
+  },
+  {
+    "entity_a": "Jewish law",
+    "entity_b": "Jewish laws",
+    "should_merge": true,
+    "canonical_name": "Jewish laws",
+    "method": "fuzzy",
+    "score": 0.9523809523809522,
+    "reasoning": "Fuzzy token_sort_ratio: 95.23809523809523%"
+  },
+  {
+    "entity_a": "Roman citizen",
+    "entity_b": "Roman citizenship",
+    "should_merge": true,
+    "canonical_name": "Roman citizenship",
+    "method": "fuzzy",
+    "score": 0.8666666666666667,
+    "reasoning": "Fuzzy token_sort_ratio: 86.66666666666667%"
+  }
+]

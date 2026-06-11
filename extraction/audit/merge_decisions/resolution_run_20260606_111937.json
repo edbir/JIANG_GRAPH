@@ -1,0 +1,47 @@
+[
+  {
+    "entity_a": "Rome",
+    "entity_b": "Roman Empire",
+    "should_merge": true,
+    "canonical_name": "Roman Empire",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'rome'"
+  },
+  {
+    "entity_a": "America",
+    "entity_b": "United States",
+    "should_merge": true,
+    "canonical_name": "United States",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'america'"
+  },
+  {
+    "entity_a": "secret police",
+    "entity_b": "Praetorian Guard",
+    "should_merge": true,
+    "canonical_name": "Praetorian Guard",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'secret police'"
+  },
+  {
+    "entity_a": "civil war",
+    "entity_b": "civil wars",
+    "should_merge": true,
+    "canonical_name": "civil wars",
+    "method": "fuzzy",
+    "score": 0.9473684210526316,
+    "reasoning": "Fuzzy token_sort_ratio: 94.73684210526316%"
+  },
+  {
+    "entity_a": "American republic",
+    "entity_b": "American democracy",
+    "should_merge": true,
+    "canonical_name": "American democracy",
+    "method": "embedding",
+    "score": 0.9050941881379502,
+    "reasoning": "Embedding cosine similarity: 0.905"
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "entity_a": "American Revolution",
+    "entity_b": "War of Independence",
+    "should_merge": true,
+    "canonical_name": "War of Independence",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'american revolution'"
+  },
+  {
+    "entity_a": "Civil War",
+    "entity_b": "civil war",
+    "should_merge": true,
+    "canonical_name": "civil war",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'civil war'"
+  },
+  {
+    "entity_a": "Napoleon",
+    "entity_b": "Napoleon Bonaparte",
+    "should_merge": true,
+    "canonical_name": "Napoleon Bonaparte",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'napoleon'"
+  },
+  {
+    "entity_a": "British",
+    "entity_b": "British Empire",
+    "should_merge": true,
+    "canonical_name": "British Empire",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'british'"
+  },
+  {
+    "entity_a": "American colonies",
+    "entity_b": "American colonists",
+    "should_merge": true,
+    "canonical_name": "American colonists",
+    "method": "fuzzy",
+    "score": 0.9142857142857143,
+    "reasoning": "Fuzzy token_sort_ratio: 91.42857142857143%"
+  },
+  {
+    "entity_a": "French and Indian War",
+    "entity_b": "French and Indian Wars",
+    "should_merge": true,
+    "canonical_name": "French and Indian Wars",
+    "method": "fuzzy",
+    "score": 0.9767441860465115,
+    "reasoning": "Fuzzy token_sort_ratio: 97.67441860465115%"
+  },
+  {
+    "entity_a": "World War I",
+    "entity_b": "World War II",
+    "should_merge": true,
+    "canonical_name": "World War II",
+    "method": "fuzzy",
+    "score": 0.9565217391304348,
+    "reasoning": "Fuzzy token_sort_ratio: 95.65217391304348%"
+  }
+]

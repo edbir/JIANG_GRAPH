@@ -1,0 +1,83 @@
+[
+  {
+    "entity_a": "Konigsberg",
+    "entity_b": "Connersburg",
+    "should_merge": true,
+    "canonical_name": "Connersburg",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'konigsberg'"
+  },
+  {
+    "entity_a": "Nazi Party",
+    "entity_b": "National Socialist German Workers' Party",
+    "should_merge": true,
+    "canonical_name": "National Socialist German Workers' Party",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'nazi party'"
+  },
+  {
+    "entity_a": "German Workers' Party",
+    "entity_b": "National Socialist German Workers' Party",
+    "should_merge": true,
+    "canonical_name": "National Socialist German Workers' Party",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'german workers' party'"
+  },
+  {
+    "entity_a": "Nazi Party",
+    "entity_b": "National Socialist German Workers' Party",
+    "should_merge": true,
+    "canonical_name": "National Socialist German Workers' Party",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'nazi party'"
+  },
+  {
+    "entity_a": "Communism",
+    "entity_b": "communism",
+    "should_merge": true,
+    "canonical_name": "communism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'communism'"
+  },
+  {
+    "entity_a": "Napoleon",
+    "entity_b": "Napoleon Bonaparte",
+    "should_merge": true,
+    "canonical_name": "Napoleon Bonaparte",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'napoleon'"
+  },
+  {
+    "entity_a": "Wagner",
+    "entity_b": "Richard Wagner",
+    "should_merge": true,
+    "canonical_name": "Richard Wagner",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'wagner'"
+  },
+  {
+    "entity_a": "Hitler",
+    "entity_b": "Adolf Hitler",
+    "should_merge": true,
+    "canonical_name": "Adolf Hitler",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'hitler'"
+  },
+  {
+    "entity_a": "Austria-Hungary Empire",
+    "entity_b": "Austrian-Hungary Empire",
+    "should_merge": true,
+    "canonical_name": "Austrian-Hungary Empire",
+    "method": "fuzzy",
+    "score": 0.9777777777777777,
+    "reasoning": "Fuzzy token_sort_ratio: 97.77777777777777%"
+  }
+]

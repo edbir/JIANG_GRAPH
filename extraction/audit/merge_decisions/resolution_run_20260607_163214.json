@@ -1,0 +1,137 @@
+[
+  {
+    "entity_a": "Kant",
+    "entity_b": "Immanuel Kant",
+    "should_merge": true,
+    "canonical_name": "Immanuel Kant",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'kant'"
+  },
+  {
+    "entity_a": "Kant",
+    "entity_b": "Immanuel Kant",
+    "should_merge": true,
+    "canonical_name": "Immanuel Kant",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'kant'"
+  },
+  {
+    "entity_a": "Hegel",
+    "entity_b": "Frederick Hegel",
+    "should_merge": true,
+    "canonical_name": "Frederick Hegel",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'hegel'"
+  },
+  {
+    "entity_a": "Hegel",
+    "entity_b": "Georg Wilhelm Friedrich Hegel",
+    "should_merge": true,
+    "canonical_name": "Georg Wilhelm Friedrich Hegel",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'hegel'"
+  },
+  {
+    "entity_a": "Frederick Hegel",
+    "entity_b": "Georg Wilhelm Friedrich Hegel",
+    "should_merge": true,
+    "canonical_name": "Georg Wilhelm Friedrich Hegel",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'frederick hegel'"
+  },
+  {
+    "entity_a": "Dante",
+    "entity_b": "Dante Alighieri",
+    "should_merge": true,
+    "canonical_name": "Dante Alighieri",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'dante'"
+  },
+  {
+    "entity_a": "Dante",
+    "entity_b": "Dante Alighieri",
+    "should_merge": true,
+    "canonical_name": "Dante Alighieri",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'dante'"
+  },
+  {
+    "entity_a": "Hegel",
+    "entity_b": "Georg Wilhelm Friedrich Hegel",
+    "should_merge": true,
+    "canonical_name": "Georg Wilhelm Friedrich Hegel",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'hegel'"
+  },
+  {
+    "entity_a": "Einstein",
+    "entity_b": "Albert Einstein",
+    "should_merge": true,
+    "canonical_name": "Albert Einstein",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'einstein'"
+  },
+  {
+    "entity_a": "Einstein",
+    "entity_b": "Albert Einstein",
+    "should_merge": true,
+    "canonical_name": "Albert Einstein",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'einstein'"
+  },
+  {
+    "entity_a": "Rationalism",
+    "entity_b": "rationalism",
+    "should_merge": true,
+    "canonical_name": "rationalism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'rationalism'"
+  },
+  {
+    "entity_a": "Empiricism",
+    "entity_b": "empiricism",
+    "should_merge": true,
+    "canonical_name": "empiricism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'empiricism'"
+  },
+  {
+    "entity_a": "Skepticism",
+    "entity_b": "skepticism",
+    "should_merge": true,
+    "canonical_name": "skepticism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'skepticism'"
+  },
+  {
+    "entity_a": "Phenomena",
+    "entity_b": "phenomena",
+    "should_merge": true,
+    "canonical_name": "phenomena",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'phenomena'"
+  },
+  {
+    "entity_a": "Quantum mechanics",
+    "entity_b": "quantum mechanics",
+    "should_merge": true,
+    "canonical_name": "quantum mechanics",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'quantum mechanics'"
+  }
+]

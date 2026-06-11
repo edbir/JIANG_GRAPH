@@ -1,0 +1,101 @@
+[
+  {
+    "entity_a": "Peking University",
+    "entity_b": "Tsinghua University",
+    "should_merge": true,
+    "canonical_name": "Tsinghua University",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'peking university'"
+  },
+  {
+    "entity_a": "Peking University",
+    "entity_b": "Tsinghua University",
+    "should_merge": true,
+    "canonical_name": "Tsinghua University",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'peking university'"
+  },
+  {
+    "entity_a": "legalism",
+    "entity_b": "Legalism",
+    "should_merge": true,
+    "canonical_name": "Legalism",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'legalism'"
+  },
+  {
+    "entity_a": "kezhu",
+    "entity_b": "civil service examination",
+    "should_merge": true,
+    "canonical_name": "civil service examination",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'kezhu'"
+  },
+  {
+    "entity_a": "Kezhu",
+    "entity_b": "civil service examination",
+    "should_merge": true,
+    "canonical_name": "civil service examination",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'kezhu'"
+  },
+  {
+    "entity_a": "kezhu",
+    "entity_b": "civil service examination",
+    "should_merge": true,
+    "canonical_name": "civil service examination",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'kezhu'"
+  },
+  {
+    "entity_a": "Ming Dynasty",
+    "entity_b": "Qing Dynasty",
+    "should_merge": true,
+    "canonical_name": "Qing Dynasty",
+    "method": "fuzzy",
+    "score": 0.9166666666666665,
+    "reasoning": "Fuzzy token_sort_ratio: 91.66666666666666%"
+  },
+  {
+    "entity_a": "Han Dynasty",
+    "entity_b": "Tang Dynasty",
+    "should_merge": true,
+    "canonical_name": "Tang Dynasty",
+    "method": "fuzzy",
+    "score": 0.8695652173913043,
+    "reasoning": "Fuzzy token_sort_ratio: 86.95652173913044%"
+  },
+  {
+    "entity_a": "Qing Empire",
+    "entity_b": "Ming Empire",
+    "should_merge": true,
+    "canonical_name": "Ming Empire",
+    "method": "fuzzy",
+    "score": 0.9090909090909091,
+    "reasoning": "Fuzzy token_sort_ratio: 90.9090909090909%"
+  },
+  {
+    "entity_a": "Han Dynasty",
+    "entity_b": "Yuan Dynasty",
+    "should_merge": true,
+    "canonical_name": "Yuan Dynasty",
+    "method": "fuzzy",
+    "score": 0.8695652173913043,
+    "reasoning": "Fuzzy token_sort_ratio: 86.95652173913044%"
+  },
+  {
+    "entity_a": "Chu",
+    "entity_b": "Zhao",
+    "should_merge": true,
+    "canonical_name": "Zhao",
+    "method": "embedding",
+    "score": 0.928495628631772,
+    "reasoning": "Embedding cosine similarity: 0.928"
+  }
+]

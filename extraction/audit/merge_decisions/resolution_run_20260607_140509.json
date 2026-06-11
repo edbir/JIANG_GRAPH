@@ -1,0 +1,47 @@
+[
+  {
+    "entity_a": "Pilgrims",
+    "entity_b": "pilgrims",
+    "should_merge": true,
+    "canonical_name": "pilgrims",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'pilgrims'"
+  },
+  {
+    "entity_a": "pilgrims",
+    "entity_b": "Separatists",
+    "should_merge": true,
+    "canonical_name": "Separatists",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'pilgrims'"
+  },
+  {
+    "entity_a": "Henry VII",
+    "entity_b": "Henry Tudor",
+    "should_merge": true,
+    "canonical_name": "Henry Tudor",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'henry vii'"
+  },
+  {
+    "entity_a": "Napoleon",
+    "entity_b": "Napoleon Bonaparte",
+    "should_merge": true,
+    "canonical_name": "Napoleon Bonaparte",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'napoleon'"
+  },
+  {
+    "entity_a": "Rousseau",
+    "entity_b": "Jean-Jacques Rousseau",
+    "should_merge": true,
+    "canonical_name": "Jean-Jacques Rousseau",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'rousseau'"
+  }
+]

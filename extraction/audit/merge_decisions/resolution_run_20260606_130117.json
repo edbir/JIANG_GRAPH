@@ -1,0 +1,101 @@
+[
+  {
+    "entity_a": "Byzantines",
+    "entity_b": "Byzantine Empire",
+    "should_merge": true,
+    "canonical_name": "Byzantine Empire",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'byzantines'"
+  },
+  {
+    "entity_a": "nobility",
+    "entity_b": "Nobility",
+    "should_merge": true,
+    "canonical_name": "Nobility",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'nobility'"
+  },
+  {
+    "entity_a": "Christianity",
+    "entity_b": "Orthodox Christianity",
+    "should_merge": true,
+    "canonical_name": "Orthodox Christianity",
+    "method": "exact",
+    "score": 1.0,
+    "reasoning": "Identical after normalization: 'christianity'"
+  },
+  {
+    "entity_a": "Yamaya",
+    "entity_b": "Yamnaya",
+    "should_merge": true,
+    "canonical_name": "Yamnaya",
+    "method": "fuzzy",
+    "score": 0.923076923076923,
+    "reasoning": "Fuzzy token_sort_ratio: 92.3076923076923%"
+  },
+  {
+    "entity_a": "Novigrad",
+    "entity_b": "Novograd",
+    "should_merge": true,
+    "canonical_name": "Novograd",
+    "method": "fuzzy",
+    "score": 0.875,
+    "reasoning": "Fuzzy token_sort_ratio: 87.5%"
+  },
+  {
+    "entity_a": "Germans",
+    "entity_b": "Germany",
+    "should_merge": true,
+    "canonical_name": "Germany",
+    "method": "fuzzy",
+    "score": 0.8571428571428572,
+    "reasoning": "Fuzzy token_sort_ratio: 85.71428571428572%"
+  },
+  {
+    "entity_a": "Russia",
+    "entity_b": "Russians",
+    "should_merge": true,
+    "canonical_name": "Russians",
+    "method": "fuzzy",
+    "score": 0.8571428571428572,
+    "reasoning": "Fuzzy token_sort_ratio: 85.71428571428572%"
+  },
+  {
+    "entity_a": "individual",
+    "entity_b": "individualism",
+    "should_merge": true,
+    "canonical_name": "individualism",
+    "method": "fuzzy",
+    "score": 0.8695652173913043,
+    "reasoning": "Fuzzy token_sort_ratio: 86.95652173913044%"
+  },
+  {
+    "entity_a": "Norway",
+    "entity_b": "Denmark",
+    "should_merge": true,
+    "canonical_name": "Denmark",
+    "method": "embedding",
+    "score": 0.9106166409258164,
+    "reasoning": "Embedding cosine similarity: 0.911"
+  },
+  {
+    "entity_a": "Sweden",
+    "entity_b": "Norway",
+    "should_merge": true,
+    "canonical_name": "Norway",
+    "method": "embedding",
+    "score": 0.9085130767096934,
+    "reasoning": "Embedding cosine similarity: 0.909"
+  },
+  {
+    "entity_a": "English",
+    "entity_b": "British",
+    "should_merge": true,
+    "canonical_name": "British",
+    "method": "embedding",
+    "score": 0.9006265992875014,
+    "reasoning": "Embedding cosine similarity: 0.901"
+  }
+]
